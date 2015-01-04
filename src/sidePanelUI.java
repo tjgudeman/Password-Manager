@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 
 import javax.swing.ScrollPaneConstants;
 
@@ -29,21 +30,83 @@ public class sidePanelUI {
 	
 	private JTextField passwordCTField;
 	private JTextField accountNTField;
-	private JTextField userNTField;
 	private JTextField emailTField;
 	private JTextField passwordTField;
 	private JButton editButton;
 	private JLabel descripLabel;
 	private JLabel accountNLabel;
-	private JLabel userNLabel;
 	private JLabel emailLabel;
 	private JLabel passwordLabel;
-	private JScrollPane descriptionScrollPane;
-	private JTextArea descripTField;
 	private JLabel passwordCLabel;
 	private JPanel EditPanel;
+	private JTextField descripTField;
+	private String key;
+	private String category;
+	private String f;
+	private DataDriver dd;
 	
-	
+	public void setters(String filename, String an, String e, String p, String d, String c, String k) {
+		accountNTField.setText(an);
+		emailTField.setText(e);
+		passwordTField.setText(p);
+		passwordCTField.setText(p);
+		descripTField.setText(d);
+		
+		f = filename;
+		category = c;
+		key = k;
+		
+		accountNTField.setEditable(false);
+		emailTField.setEditable(false);
+		passwordTField.setEditable(false);
+		passwordCTField.setEditable(false);
+		descripTField.setEditable(false);
+		editButton.setEnabled(true);
+		
+		EditPanel.setVisible(false);
+		
+		
+	}
+	public JTextField getPasswordCTField() {
+		return passwordCTField;
+	}
+
+	public void setPasswordCTField(JTextField passwordCTField) {
+		this.passwordCTField = passwordCTField;
+	}
+
+	public JTextField getAccountNTField() {
+		return accountNTField;
+	}
+
+	public void setAccountNTField(String accountNTField) {
+		this.accountNTField.setText(accountNTField);
+	}
+
+	public JTextField getEmailTField() {
+		return emailTField;
+	}
+
+	public void setEmailTField(JTextField emailTField) {
+		this.emailTField = emailTField;
+	}
+
+	public JTextField getPasswordTField() {
+		return passwordTField;
+	}
+
+	public void setPasswordTField(JTextField passwordTField) {
+		this.passwordTField = passwordTField;
+	}
+
+	public JTextField getDescripTField() {
+		return descripTField;
+	}
+
+	public void setDescripTField(JTextField descripTField) {
+		this.descripTField = descripTField;
+	}
+
 	public sidePanelUI(){
 		sidePanel = new JPanel();
 		sidePanel.setForeground(new Color(0, 0, 0));
@@ -51,78 +114,64 @@ public class sidePanelUI {
 						    new Color(0, 0, 0), 2, true), "Details", 
 						    TitledBorder.LEFT, TitledBorder.TOP, 
 						    null, new Color(0, 0, 0)));
-		sidePanel.setBounds(10, 46, 205, 484);
+		sidePanel.setBounds(10, 20, 205, 396);
 		sidePanel.setBackground(new Color(255, 246, 230));
 		sidePanel.setLayout(null);
 		
 		JPanel viewPanel = new JPanel();
-		viewPanel.setBounds(9, 21, 186, 303);
+		viewPanel.setBounds(9, 21, 186, 257);
 		viewPanel.setBackground(new Color(255, 246, 230));
 		sidePanel.add(viewPanel);
 		viewPanel.setLayout(null);
 		
 		editButton = new JButton("Edit");
+		editButton.setEnabled(false);
 		editButton.setBounds(0, 19, 57, 23);
 		
 		viewPanel.add(editButton);
 		
 		descripLabel = new JLabel("Description:");
-		descripLabel.setBounds(0, 53, 83, 14);
+		descripLabel.setBounds(0, 155, 83, 14);
 		viewPanel.add(descripLabel);
 		
 		accountNLabel = new JLabel("Account Name:");
-		accountNLabel.setBounds(0, 120, 97, 14);
+		accountNLabel.setBounds(0, 53, 97, 14);
 		viewPanel.add(accountNLabel);
 		
 		accountNTField = new JTextField();
 		accountNTField.setEditable(false);
 		accountNTField.setColumns(10);
-		accountNTField.setBounds(0, 135, 132, 20);
+		accountNTField.setBounds(0, 68, 132, 20);
 		viewPanel.add(accountNTField);
 		
-		userNLabel = new JLabel("User Name:");
-		userNLabel.setBounds(0, 166, 83, 14);
-		viewPanel.add(userNLabel);
-		
-		userNTField = new JTextField();
-		userNTField.setEditable(false);
-		userNTField.setColumns(10);
-		userNTField.setBounds(0, 180, 132, 20);
-		viewPanel.add(userNTField);
-		
 		emailLabel = new JLabel("Email:");
-		emailLabel.setBounds(0, 211, 83, 14);
+		emailLabel.setBounds(0, 99, 83, 14);
 		viewPanel.add(emailLabel);
 		
 		emailTField = new JTextField();
 		emailTField.setEditable(false);
 		emailTField.setColumns(10);
-		emailTField.setBounds(0, 229, 132, 20);
+		emailTField.setBounds(0, 117, 132, 20);
 		viewPanel.add(emailTField);
 		
 		passwordLabel = new JLabel("Password:");
-		passwordLabel.setBounds(0, 260, 83, 14);
+		passwordLabel.setBounds(0, 211, 83, 14);
 		viewPanel.add(passwordLabel);
 		
 		passwordTField = new JTextField();
 		passwordTField.setEditable(false);
 		passwordTField.setColumns(10);
-		passwordTField.setBounds(0, 274, 132, 20);
+		passwordTField.setBounds(0, 226, 132, 20);
 		viewPanel.add(passwordTField);
 		
-		descriptionScrollPane = new JScrollPane();
-		descriptionScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		descriptionScrollPane.setBounds(0, 66, 186, 43);
-		viewPanel.add(descriptionScrollPane);
-		
-		descripTField = new JTextArea();
+		descripTField = new JTextField();
 		descripTField.setEditable(false);
-		descripTField.setOpaque(false);
-		descripTField.setLineWrap(true);
-		descriptionScrollPane.setViewportView(descripTField);
+		descripTField.setBounds(0, 180, 132, 20);
+		viewPanel.add(descripTField);
+		descripTField.setColumns(10);
 		
 		EditPanel = new JPanel();
-		EditPanel.setBounds(10, 323, 185, 138);
+		EditPanel.setBounds(9, 289, 185, 92);
 		EditPanel.setVisible(false);
 		EditPanel.setBackground(new Color(255, 246, 230));
 		sidePanel.add(EditPanel);
@@ -138,11 +187,39 @@ public class sidePanelUI {
 		passwordCTField.setColumns(10);
 		
 		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(0, 104, 89, 23);
+		btnSave.setBounds(0, 59, 89, 23);
+		btnSave.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				dd = new DataDriver();
+				try {
+					accountNTField.setEditable(false);
+					emailTField.setEditable(false);
+					passwordTField.setEditable(false);
+					passwordCTField.setEditable(false);
+					descripTField.setEditable(false);
+					editButton.setEnabled(true);
+					
+					editButton.setEnabled(false);
+					EditPanel.setVisible(false);
+					dd.editData(f, accountNTField.getText(),
+					emailTField.getText(),
+					passwordTField.getText(),
+					descripTField.getText(),
+					category,
+					key);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		EditPanel.add(btnSave);
 		
 		editButton.addMouseListener(new mListener());
 	}
+	
 	
 	public JPanel getPanel(){
 		sidePanel.setVisible(true);
@@ -158,10 +235,10 @@ public class sidePanelUI {
 				descripTField.setEditable(true);
 				descripTField.setOpaque(true);
 				accountNTField.setEditable(true);
-				userNTField.setEditable(true);
 				emailTField.setEditable(true);
 				passwordTField.setEditable(true);
 				EditPanel.setVisible(true);
+				passwordCTField.setEditable(true);
 			}
 			
 		}

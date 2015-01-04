@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JTree;
 import javax.swing.table.DefaultTableModel;
@@ -35,9 +36,12 @@ public class DefaultScreenUI extends JFrame {
 	private JPanel welcomePanel;
 	private JFrame frame;
 	private JMenuBar menuBar;
+	private String filename;
+	private String path;
 	
 
-	public DefaultScreenUI() {
+	public DefaultScreenUI(String filename) {
+		path = "C:\\PasswordManager\\" + filename + ".pwm";
 		frame = new JFrame();
 		frame.setVisible(true);
 		panel = new JPanel();
@@ -77,16 +81,23 @@ public class DefaultScreenUI extends JFrame {
 		lblMail.setBounds(40, 172, 99, 14);
 		panel.add(lblMail);
 
-		ImageIcon mail = new ImageIcon("big\\mail.png");
+		ImageIcon mail = new ImageIcon("big/mail.png");
 		JButton btnMail = new JButton(mail);
 		btnMail.setBackground(new Color(245, 147, 43));
 		btnMail.setBounds(40, 64, 99, 97);
 		btnMail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listView = new listUI();
+				try {
+					listView = new listUI(path, "Mail");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				listPanel = listView.getPanel();
 				frame.getContentPane().add(listPanel);
 				panel.setVisible(false);
+				welcomePanel.setVisible(false);
+				frame.getContentPane().add(sidePanel);
 				if(newPanel != null){
 					frame.remove(newPanel);
 				}
@@ -107,6 +118,24 @@ public class DefaultScreenUI extends JFrame {
 		JButton btnUsers = new JButton(user);
 		btnUsers.setBackground(new Color(76, 45, 169));
 		btnUsers.setBounds(40, 295, 99, 96);
+		btnUsers.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listView = new listUI(path, "Users");
+					listPanel = listView.getPanel();
+					frame.getContentPane().add(listPanel);
+					panel.setVisible(false);
+					welcomePanel.setVisible(false);
+					if(newPanel != null){
+						frame.remove(newPanel);
+					}
+				
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		panel.add(btnUsers);
 
 		/***********************************************************************************************
@@ -123,6 +152,25 @@ public class DefaultScreenUI extends JFrame {
 		JButton btnSocial = new JButton(social);
 		btnSocial.setBackground(new Color(245, 62, 43));
 		btnSocial.setBounds(178, 64, 99, 97);
+		btnSocial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listView = new listUI(path, "Social");
+//					listView.loadData();
+					listPanel = listView.getPanel();
+					frame.getContentPane().add(listPanel);
+					panel.setVisible(false);
+					welcomePanel.setVisible(false);
+					if(newPanel != null){
+						frame.remove(newPanel);
+					}
+				
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		panel.add(btnSocial);
 
 		/***********************************************************************************************
@@ -139,6 +187,25 @@ public class DefaultScreenUI extends JFrame {
 		JButton btnPurchase = new JButton(buy);
 		btnPurchase.setBackground(new Color(90, 186, 119));
 		btnPurchase.setBounds(316, 64, 99, 97);
+		btnPurchase.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listView = new listUI(path, "Shopping");
+//					listView.loadData();
+					listPanel = listView.getPanel();
+					frame.getContentPane().add(listPanel);
+					panel.setVisible(false);
+					welcomePanel.setVisible(false);
+					if(newPanel != null){
+						frame.remove(newPanel);
+					}
+				
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		panel.add(btnPurchase);
 
 		/***********************************************************************************************
@@ -155,6 +222,25 @@ public class DefaultScreenUI extends JFrame {
 		JButton btnBanking = new JButton(bank);
 		btnBanking.setBackground(new Color(36, 115, 149));
 		btnBanking.setBounds(454, 64, 99, 97);
+		btnBanking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listView = new listUI(path, "Banking");
+//					listView.loadData();
+					listPanel = listView.getPanel();
+					frame.getContentPane().add(listPanel);
+					panel.setVisible(false);
+					welcomePanel.setVisible(false);
+					if(newPanel != null){
+						frame.remove(newPanel);
+					}
+				
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		panel.add(btnBanking);
 
 		/***********************************************************************************************
@@ -171,6 +257,25 @@ public class DefaultScreenUI extends JFrame {
 		JButton btnWork = new JButton(work);
 		btnWork.setBackground(new Color(123, 122, 123));
 		btnWork.setBounds(178, 295, 99, 96);
+		btnWork.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listView = new listUI(path, "Work/Edu");
+//					listView.loadData();
+					listPanel = listView.getPanel();
+					frame.getContentPane().add(listPanel);
+					panel.setVisible(false);
+					welcomePanel.setVisible(false);
+					if(newPanel != null){
+						frame.remove(newPanel);
+					}
+				
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		panel.add(btnWork);
 
 		/***********************************************************************************************
@@ -187,6 +292,24 @@ public class DefaultScreenUI extends JFrame {
 		JButton btnOther = new JButton(other);
 		btnOther.setBackground(new Color(189, 39, 124));
 		btnOther.setBounds(316, 295, 99, 96);
+		btnOther.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listView = new listUI(path, "Other");
+					listPanel = listView.getPanel();
+					frame.getContentPane().add(listPanel);
+					panel.setVisible(false);
+					welcomePanel.setVisible(false);
+					if(newPanel != null){
+						frame.remove(newPanel);
+					}
+				
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		panel.add(btnOther);
 
 		/***********************************************************************************************
@@ -203,6 +326,25 @@ public class DefaultScreenUI extends JFrame {
 		JButton btnAll = new JButton(all);
 		btnAll.setBackground(new Color(236, 219, 49));
 		btnAll.setBounds(454, 295, 99, 96);
+		btnAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listView = new listUI(path, "");
+//					listView.loadData();
+					listPanel = listView.getPanel();
+					frame.getContentPane().add(listPanel);
+					panel.setVisible(false);
+					welcomePanel.setVisible(false);
+					if(newPanel != null){
+						frame.remove(newPanel);
+					}
+				
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		panel.add(btnAll);
 		/***********************************************************************************************
 		 ********************************* Tool Bar Components*******************************************
@@ -261,9 +403,8 @@ public class DefaultScreenUI extends JFrame {
 				if(listPanel != null) {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
-					System.out.println("removed listPanel");
 				}
-				newView = new newUI();
+				newView = new newUI(path);
 				newView.setStatus("Mail");
 				panel.setVisible(false);
 				newPanel = newView.getPanel();
@@ -280,9 +421,8 @@ public class DefaultScreenUI extends JFrame {
 				if(listPanel != null) {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
-					System.out.println("removed listPanel");
 				}
-				newView = new newUI();
+				newView = new newUI(path);
 				newView.setStatus("Social");
 				panel.setVisible(false);
 				newPanel = newView.getPanel();
@@ -300,9 +440,8 @@ public class DefaultScreenUI extends JFrame {
 				if(listPanel != null) {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
-					System.out.println("removed listPanel");
 				}
-				newView = new newUI();
+				newView = new newUI(path);
 				panel.setVisible(false);
 				newView.setStatus("Shopping");
 				newPanel = newView.getPanel();
@@ -320,9 +459,8 @@ public class DefaultScreenUI extends JFrame {
 				if(listPanel != null) {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
-					System.out.println("removed listPanel");
 				}
-				newView = new newUI();
+				newView = new newUI(path);
 				panel.setVisible(false);
 				newView.setStatus("Banking");
 				newPanel = newView.getPanel();
@@ -340,9 +478,8 @@ public class DefaultScreenUI extends JFrame {
 				if(listPanel != null) {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
-					System.out.println("removed listPanel");
 				}
-				newView = new newUI();
+				newView = new newUI(path);
 				panel.setVisible(false);
 				newView.setStatus("User Account");
 				newPanel = newView.getPanel();
@@ -360,9 +497,8 @@ public class DefaultScreenUI extends JFrame {
 				if(listPanel != null) {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
-					System.out.println("removed listPanel");
 				}
-				newView = new newUI();
+				newView = new newUI(path);
 				panel.setVisible(false);
 				newView.setStatus("Work/Edu");
 				newPanel = newView.getPanel();
@@ -380,9 +516,9 @@ public class DefaultScreenUI extends JFrame {
 				if(listPanel != null) {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
-					System.out.println("removed listPanel");
+					
 				}
-				newView = new newUI();
+				newView = new newUI(path);
 				panel.setVisible(false);
 				newView.setStatus("Other");
 				newPanel = newView.getPanel();
@@ -403,9 +539,20 @@ public class DefaultScreenUI extends JFrame {
 		menuBar.add(mnHelp);
 
 		JMenuItem mntmHowto = new JMenuItem("How-To ");
-		mntmHowto.setIcon(new ImageIcon("menubar\\HelpMenu\\howTo.png"));
-		mnHelp.add(mntmHowto);
+        mntmHowto.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                        	JOptionPane.showMessageDialog(frame, "1. To create an account, "
+                        			+ "click on the plus sign in the upper hand tool bar, or"
+                        			+ " under the drop down menu \"Account\", go to \"Add Account\""
+                        			+ " and select the account you want to create.\r\n\r\n2. "
+                        			+ "Fill in the necessary information. Remember, a description "
+                        			+ "is not required, but is recommended.\r\n\r\n3. Once you have"
+                        			+ " filled out all the necessary information, click save.");
 
+                        }
+        });
+        mntmHowto.setIcon(new ImageIcon("menubar\\HelpMenu\\howTo.png"));
+        mnHelp.add(mntmHowto);
 		JMenuItem mntmAbout = new JMenuItem("About ");
 		mntmAbout.setIcon(new ImageIcon("menubar\\HelpMenu\\about.png"));
 		mnHelp.add(mntmAbout);
@@ -437,123 +584,60 @@ public class DefaultScreenUI extends JFrame {
 		JToolBar toolBar = new JToolBar();
 		
 		toolBar.setBounds(0, 17, frame.getWidth(), 29);
+		toolBar.setFloatable(false);
 		frame.getContentPane().add(toolBar);
 		toolBar.setBackground(new Color(154, 202, 141));
-		
-		JButton btnBack = new JButton(back);
-		btnBack.setBackground(new Color(255, 160, 81));
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				Change this to new(instances) instead of invisibility
-//				listView.Visible(false);
-//				newView.Visible(false);
-//				panel.setVisible(true);
-			}
-		});
-		toolBar.add(btnBack);
-		JButton btnFront = new JButton(front);
-		btnFront.setBackground(new Color(255, 160, 81));
-		btnFront.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				Change this to new(instances) instead of invisibility				
-//				listView.Visible(true);
-//				newView.Visible(false);
-//				panel.setVisible(false);
-			}
-		});
-		toolBar.add(btnFront);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< HEAD
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
-<<<<<<< HEAD
-		
-=======
->>>>>>> 7cd740c21442231b53eed16657774e9f6d85b8f1
-=======
-		
->>>>>>> origin/master
-<<<<<<< HEAD
-=======
->>>>>>> fa41949a09fa10d0f3cf3cd4cd68d5de505acf16
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
-		JButton btnNewButton_1 = new JButton(home);
-		btnNewButton_1.setBackground(new Color(255, 160, 81));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton TBbtnHome = new JButton(home);
+		TBbtnHome.setBackground(new Color(255, 160, 81));
+		TBbtnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(listPanel != null){
+					listPanel.setVisible(false);
 					frame.remove(listPanel);
 				}
 				if(newPanel != null){
+					newPanel.setVisible(false);
 					frame.remove(newPanel);
 				}
+				welcomePanel.setVisible(true);
 				panel.setVisible(true);
 			}
 		});
 		
-				toolBar.add(btnNewButton_1);
-				JButton btnNewButton = new JButton(newie);
-				btnNewButton.setBackground(new Color(255, 160, 81));
-				btnNewButton.addActionListener(new ActionListener() {
+				toolBar.add(TBbtnHome);
+				JButton TBbtnNew = new JButton(newie);
+				TBbtnNew.setBackground(new Color(255, 160, 81));
+				TBbtnNew.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-						newView = new newUI();
-						panel.setVisible(false);
-						if(listPanel != null){
-							frame.remove(listPanel);
-						}
-						newPanel = newView.getPanel();
-						frame.getContentPane().add(newPanel);
-=======
-<<<<<<< HEAD
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
-<<<<<<< HEAD
 						if(listPanel != null) {
 							listPanel.setVisible(false);
 							frame.remove(listPanel);
-							System.out.println("removed listPanel");
 						}
-						newView = new newUI();
+						welcomePanel.setVisible(true);
+						newView = new newUI(path);
 						panel.setVisible(false);
 						newPanel = newView.getPanel();
-						newPanel.setVisible(true);
 						frame.getContentPane().add(newPanel);
-						
-=======
-						newView = new newUI();
-						panel.setVisible(false);
-						if(listPanel != null){
-=======
-						if(listPanel != null) {
-							listPanel.setVisible(false);
->>>>>>> origin/master
-							frame.remove(listPanel);
-							System.out.println("removed listPanel");
-						}
-						newView = new newUI();
-						panel.setVisible(false);
-						newPanel = newView.getPanel();
-						newPanel.setVisible(true);
-						frame.getContentPane().add(newPanel);
-<<<<<<< HEAD
->>>>>>> 7cd740c21442231b53eed16657774e9f6d85b8f1
-=======
-						
->>>>>>> origin/master
-<<<<<<< HEAD
-=======
->>>>>>> fa41949a09fa10d0f3cf3cd4cd68d5de505acf16
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
 					}
 				});
-				toolBar.add(btnNewButton);
-				JButton btnRefresh = new JButton(refresh);
-				btnRefresh.setBackground(new Color(255, 160, 81));
-				toolBar.add(btnRefresh);
+				toolBar.add(TBbtnNew);
+				JButton TBbtnRefresh = new JButton(refresh);
+				TBbtnRefresh.setBackground(new Color(255, 160, 81));
+				TBbtnRefresh.addActionListener(new ActionListener(){
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						try {
+							listView.loadData();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					
+				});
+				toolBar.add(TBbtnRefresh);
 
 	}
 

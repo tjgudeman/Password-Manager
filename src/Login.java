@@ -1,55 +1,71 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-public class Login {
-	
-	public Login(/* username and password */){
-		
-=======
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.PatternSyntaxException;
 
 
-<<<<<<< HEAD
+
 
 public class Login {
-	private String username;
-	private String password;
-	private File mf;
-	public Login(String un, String pass){
-		username = un;
-		password = pass;
-		
-		checkCred(username, password);
+	private boolean check;
+	public Login(String u, String p){
+		String userFile = rotate(u);
+		String path = new String("C:\\PasswordManager\\master.pwm");
 	}
 	
-	public boolean checkCred(String un, String pass){
-		mf = new File("C:\\PasswordManager\\master.pmw");
-		
-		return null;
-=======
->>>>>>> origin/master
-
-public class Login {
-	private String username;
-	private String password;
-	private File mf;
-	public Login(String un, String pass){
-		username = un;
-		password = pass;
-		
-		checkCred(username, password);
+	public String rotate(String un){
+		String str = "";
+        for (int i = 0; i < un.length(); i++) 
+        {
+            char c = un.charAt(i);
+            if       (c >= 'a' && c <= 'm') c += 13;
+            else if  (c >= 'A' && c <= 'M') c += 13;
+            else if  (c >= 'n' && c <= 'z') c -= 13;
+            else if  (c >= 'N' && c <= 'Z') c -= 13;
+            str += c;
+        }
+        return str;
 	}
 	
-	public boolean checkCred(String un, String pass){
-		mf = new File("C:\\PasswordManager\\master.pmw");
-		
-		return null;
-<<<<<<< HEAD
-=======
->>>>>>> fa41949a09fa10d0f3cf3cd4cd68d5de505acf16
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
+	public boolean readFile(String file, String u, String p) throws IOException{
+		BufferedReader s = new BufferedReader(new FileReader(file));
+		String line;
+		line = s.readLine();
+		while(line != null) {
+			try {
+			    String[] splitArray = line.split("\\s");
+				if(checkCred(splitArray, u, p)){
+			    	check = true;
+			    	break;
+			    }
+			    else{
+			    	check = false;
+			    }
+			} catch (PatternSyntaxException ex) {
+			    System.out.print(ex);
+			}
+			line = s.readLine();
+		}
+		s.close();
+		return check;
+	}
+	
+	public boolean checkCred(String[] arr, String u, String p){
+		if (arr[4].equals(u)){
+			if (arr[5].equals(p)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
 	}
 
 }

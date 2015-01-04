@@ -51,7 +51,7 @@ public class Password {
 			}
 		}
 		if (s) {
-			for (int i = 0; i < 15; i++) {
+			for (int i = 0; i < 10; i++) {
 				cs.add(33 + i);
 			}
 			for (int i = 0; i < 7; i++) {

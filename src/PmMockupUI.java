@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 public class PmMockupUI extends JFrame{
 	private JLabel welcome;
 	private JLabel about;
-	private LoginGUI liView = new LoginGUI();
-	private SignUpGUI sugView = new SignUpGUI();
+	private LoginGUI liView;
+	private SignUpGUI sugView;
 	
 	public PmMockupUI() {
 		this.setSize(480, 533);
@@ -54,8 +54,8 @@ public class PmMockupUI extends JFrame{
 		cPanel.add(btnLogIn);
 		btnLogIn.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  liView.setVisible(true);
-				  sugView.setVisible(false);
+				  liView = new LoginGUI();
+//				  sugView.dispose();
 			  } 
 			} );
 		
@@ -65,9 +65,8 @@ public class PmMockupUI extends JFrame{
 		btnSignUp.setBackground(new Color(154, 202, 141));
 		cPanel.add(btnSignUp);
 		btnSignUp.addActionListener(new ActionListener() { 
-			  public void actionPerformed(ActionEvent e) { 
-				  sugView.setVisible(true);
-				  liView.setVisible(false);
+			  public void actionPerformed(ActionEvent e) {
+				  sugView = new SignUpGUI();
 			  } 
 			} );	
 	}

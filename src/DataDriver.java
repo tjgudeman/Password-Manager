@@ -1,92 +1,81 @@
-import org.json.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.regex.PatternSyntaxException;
 
 public class DataDriver {
-	public ArrayList<Account> AccountList;
+	private int lineCount;
 	
 	public DataDriver()
 	{
-		AccountList = new ArrayList<Account>();
-	}
-//	public boolean GetMasterAccount(String filename, String password)
-//	{
-//		try{
-//			JSONTokener reader = new JSONTokener(new FileReader(filename));
-//			Object o = reader.nextValue();
-//			
-//		}
-//		catch(Exception e)
-//		{
-//			
-//		}
-//	}
-	
-	public void CreateMasterAccount(String filename, JSONObject masterAccount)
-	{
-		
 	}
 	
-	public void LoadData(String filename)
+	
+	public void SaveData(String filename, String an, String e, String p, String d, String c)
 	{
+	    String accountName = an;
+	    String email = e;
+	    String password = p;
+	    String description = d;
+	    String category = c;
+
+    	String myArray[] = new String[5];
+    	
+    	myArray[0] = accountName;
+    	myArray[1] = email;
+    	myArray[2] = password;
+    	myArray[3] = description;
+    	myArray[4] = category;
+    	
 		try{
-			JSONTokener reader = new JSONTokener(new FileReader(filename));
-			do
-			{
-				AccountList = new ArrayList<Account>();
-				Object o = reader.nextValue();
-				String s = o.toString();
-				String [] results = s.substring(1, s.length() - 1).split(",");
-				String AccountName = results[0].substring(results[0].indexOf(':') + 2, results[0].length() - 1);
-				String Email = results[1].substring(results[1].indexOf(':') + 2, results[1].length() - 1);
-				String Description = results[2].substring(results[2].indexOf(':') + 2, results[2].length() - 1);
-				String Category = results[3].substring(results[3].indexOf(':') + 2, results[3].length() - 1);
-				String Password = results[4].substring(results[4].indexOf(':') + 2, results[4].length() - 1);
-				Account a = new Account(AccountName, Email, Description, Category, Password);
-				AccountList.add(a);
-			} while(!reader.end());
-		}
-		catch(Exception e)
-		{
-			//Error reading from the file.
-		}
-	}
-	
-	public void SaveData(String filename)
-	{
-		JSONObject obj;
-		
-	    String accountName = "";
-	    String email = "";
-	    String password = "";
-	    String description = "";
-	    String category = "";
-
-	    
-	    for(int i = 0; i < AccountList.size(); i++)
-	    {
-	    	obj = new JSONObject();
-		    try{
-			    obj.put("Account Name", AccountList.get(i).getAccountName());
-			    obj.put("Email", AccountList.get(i).getEmail());
-			    obj.put("Password", AccountList.get(i).getPassword());
-			    obj.put("Description", AccountList.get(i).getDescription());
-			    obj.put("Category", AccountList.get(i).getCategory());
-		    }
-		    catch (Exception e) {
-		    	//Error setting up the JSONObject
-		    }
-		    try{
-		    	FileWriter file = new FileWriter("c:\\test.json");
-		    	file.write(obj.toString());
-		    	file.flush();
-		    	file.close();
-		    }
-		    catch (Exception e)
-		    {
-		    	//Error writing to the file
-		    }
+			FileWriter fw = new FileWriter(filename, true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			for(int j = 0; j < myArray.length; j++){
+				bw.append(myArray[j] + ",");
+				if(j == myArray.length - 1){
+					
+					bw.append(Math.random() * 1000000 + ",");
+					
+				}
+				
 	    }
-
+	    bw.newLine();
+	    
+	    bw.close();
+	    fw.close();
+		}
+		catch(Exception ex)
+		{
+			System.out.println(ex);
+		}	
 	}
+		public void editData(String filename, String an, String e, String p, String d, String c, String k) throws IOException{
+			BufferedReader s = new BufferedReader(new FileReader(filename));
+		    ArrayList<String> lines = new ArrayList<String>();
+			String line;
+			line = s.readLine();
+			while(line != null) {
+				try {
+				    String[] splitArray = line.split(",");
+					if(splitArray[5].equals(k)){
+				    	lines.add(an + "," + e + "," + p + "," + d + "," + c + "," + k + ",");
+				    }
+				    else{
+				    	lines.add(splitArray[0] + "," + splitArray[1] + "," + splitArray[2] + "," + splitArray[3] + "," + splitArray[4] + "," + splitArray[5] + ",");
+				    }
+				} catch (PatternSyntaxException ex) {
+				    System.out.print(ex);
+				}
+				line = s.readLine();
+			}
+			s.close();
+			FileWriter fw = new FileWriter(filename);
+			BufferedWriter bw = new BufferedWriter(fw);
+			for(String l: lines)
+			{
+				bw.append(l);
+				bw.newLine();
+			}
+			bw.close();
+			fw.close();
+		}
 }

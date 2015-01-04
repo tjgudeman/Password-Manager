@@ -3,16 +3,41 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.AbstractTableModel;
 
-public class listUI {
+import java.util.ArrayList;
+import java.util.regex.PatternSyntaxException;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class listUI extends JFrame{
 	private JTextField s_field ;
 	private JPanel listPanel;
 	private Container cp;
+	private String filename;
+	private String category;
+	private Object value;
+	private BufferedReader s;
+	private JTable table;
+	private sidePanelUI sideView;
+	private JPanel sidePanel;
+	private JFrame frame;
+	private String f;
 	
-	public listUI(){
+	public listUI(String filename, String category) throws IOException{
+		f = filename;
+		this.category = category;
 		JToolBar inTb = new JToolBar();
-		inTb.setBounds(10, 14, 285, 42);
+		inTb.setFloatable(false);
+		inTb.setBounds(228, 14, 230, 42);
 		
 		ImageIcon tmail = new ImageIcon("listTool\\mail.png");
 		JButton tbtnMail = new JButton(tmail);
@@ -38,7 +63,6 @@ public class listUI {
 		ImageIcon tbank = new ImageIcon("listTool\\bank.png");
 		JButton tbtnBanking = new JButton(tbank);
 		tbtnBanking.setBackground(new Color(36, 115, 149));
-		tbtnBanking.setPreferredSize(new Dimension(40, 40));
 		inTb.add(tbtnBanking);
 		
 		ImageIcon twork = new ImageIcon("listTool\\work.png");
@@ -57,109 +81,148 @@ public class listUI {
 		inTb.add(tbtnAll);
 		
 	    listPanel = new JPanel();
-	    listPanel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0), 2, true), "Browser", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
-	    listPanel.setBounds(225, 46, 589, 484);
+	    listPanel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0), 2), "Browser", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
+	    listPanel.setBounds(0, 46, 796, 484);
 	    listPanel.setBackground(new Color(255, 246, 230));
 		listPanel.setLayout(null);
-		listPanel.add(inTb);
+//		listPanel.add(inTb);
 		listPanel.setVisible(true);
 		
 		JLabel lblAccountName_1 = new JLabel("Account Name");
 		lblAccountName_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAccountName_1.setBounds(10, 74, 113, 14);
+		lblAccountName_1.setBounds(218, 74, 113, 14);
 		listPanel.add(lblAccountName_1);
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsername.setBounds(125, 74, 113, 14);
+		lblUsername.setBounds(333, 74, 113, 14);
 		listPanel.add(lblUsername);
 		
-		JLabel lblPassword_2 = new JLabel("Password");
-		lblPassword_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPassword_2.setBounds(240, 74, 113, 14);
-		listPanel.add(lblPassword_2);
+		JLabel lblDescription = new JLabel("Password");
+		lblDescription.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDescription.setBounds(448, 74, 113, 14);
+		listPanel.add(lblDescription);
 		
-		JLabel lblDate = new JLabel("Date");
-		lblDate.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDate.setBounds(353, 74, 113, 14);
-		listPanel.add(lblDate);
+		JLabel lblCategory = new JLabel("Description");
+		lblCategory.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCategory.setBounds(561, 74, 113, 14);
+		listPanel.add(lblCategory);
 		
-		JLabel lblDescription_1 = new JLabel("Description");
-		lblDescription_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDescription_1.setBounds(466, 74, 113, 14);
-		listPanel.add(lblDescription_1);
+		JLabel lblPassword = new JLabel("Category");
+		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPassword.setBounds(674, 74, 113, 14);
+		listPanel.add(lblPassword);
 		
 		JLabel lblSearch = new JLabel("Search: ");
 		lblSearch.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblSearch.setBounds(353, 42, 86, 14);
+		lblSearch.setBounds(561, 42, 86, 14);
 		listPanel.add(lblSearch);
 		
 		s_field = new JTextField();
-		s_field.setBounds(449, 39, 130, 20);
-		listPanel.add(s_field);
-		s_field.setColumns(10);
-		
-		JTable table = new JTable();
-		table.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-			},
-			new String[] {
-				"Account Name", "Username", "Password", "Date", "Description"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, Object.class, String.class, Object.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-			boolean[] columnEditables = new boolean[] {
-				false, true, true, true, true
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
+		s_field.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					loadData();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		table.getColumnModel().getColumn(0).setResizable(false);
-		table.setBounds(10, 89, 569, 384);
+		s_field.setBounds(657, 39, 130, 20);
+		listPanel.add(s_field);
+		s_field.setColumns(10);
+		table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		table.setBounds(228, 99, 584, 374);
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(table.getSelectedRow() > -1){
+//					System.out.print
+					String an = table.getValueAt(table.getSelectedRow(), 0).toString();
+					String e = table.getValueAt(table.getSelectedRow(), 1).toString();
+					String p = table.getValueAt(table.getSelectedRow(), 2).toString();
+					String d = table.getValueAt(table.getSelectedRow(), 3).toString();
+					String c = table.getValueAt(table.getSelectedRow(), 4).toString();
+					String k = table.getValueAt(table.getSelectedRow(), 5).toString();
+					
+					sideView.setters(f, an, e, p, d, c, k);
+					
+				}
+				
+			}
+			
+		});
 		listPanel.add(table);
+		
+		loadData();
+		 //Test
+		sideView = new sidePanelUI();
+		sidePanel = sideView.getPanel();
+		sidePanel.setVisible(true);
+		listPanel.add(sidePanel);
+//		getSidePanel();
+		
+	}
+	
+	public JPanel getSidePanel(){
+		return sidePanel;
 	}
 	
 	public JPanel getPanel(){
 		return listPanel;
 	}
+	
+	
+	public void loadData() throws IOException
+	{
+		String columns[] =  {"Account Name", "Email", "Password", "Description", "Category", "Key"};
+	    DefaultTableModel tableModel = new DefaultTableModel(){
+	    	@Override
+	    	public boolean isCellEditable(int row, int column){
+	    		return false;
+	    	}
+	    };
+	    
+	    tableModel.setColumnIdentifiers(columns);
+	    table.setModel(tableModel);
+	    String line;
+	    BufferedReader reader;
+        try{       
+            reader = new BufferedReader(new FileReader(f));
+            while((line = reader.readLine()) != null) 
+            {
+            	String array[] = new String[6];
+            	array = line.split(",");
+            	String nLine = "";
+            	String s = s_field.getText().toLowerCase();
+    			if(array[4].equals(category) || category == "")
+    			{
+    				if((array[0].toLowerCase().contains(s) || array[1].toLowerCase().contains(s)))
+    				{
+	    				for(int i = 0; i < array.length; i++){
+	    					nLine += array[i] + ",";
+	    				}
+    				tableModel.addRow(nLine.split(","));
+    				}
+    			}
+    			
+            }
+            reader.close();
+            table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            table.getColumnModel().getColumn(5).setMaxWidth(0);
+         }
+        catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Error");
+            e.printStackTrace();
+        }
 
+	}
+	public String getsearchString(){
+		return s_field.getText();
+	}
 }
+

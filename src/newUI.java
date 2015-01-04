@@ -9,32 +9,25 @@ import javax.swing.border.TitledBorder;
 
 
 public class newUI{
+	private JTextField an_field;
+	private JTextField e_field;
+	private JPasswordField p_field;
+	private JPasswordField cp_field;
+	private JEditorPane editorPane;
 	private JPanel naPanel;
 	private JComboBox comboBox;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
 	private JCheckBox chckbxLowerCase;
 	private JCheckBox chckbxUpperCase;
 	private JCheckBox chckbxNumbers;
 	private JCheckBox chckbxSpecialCharacters;
-	private JTextField gp_field;
-	private JTextField pl_field;
-	private Password pw;
-<<<<<<< HEAD
-=======
->>>>>>> 7cd740c21442231b53eed16657774e9f6d85b8f1
-=======
->>>>>>> origin/master
->>>>>>> fa41949a09fa10d0f3cf3cd4cd68d5de505acf16
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
+	private JTextField l_field;
+	private Password gp;
+	private JTextField Genp_field;
+	private String fn;
+	private String an, e, p, d, c;
 	
-	public newUI(){
+	public newUI(String filename){
+		fn = filename;
 		naPanel = new JPanel();
 		naPanel.setVisible(true);
 	    naPanel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0), 2, true), "New Account", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -47,7 +40,7 @@ public class newUI{
 		lblAccountName.setBounds(37, 53, 103, 14);
 		naPanel.add(lblAccountName);
 		
-		JTextField an_field = new JTextField();
+		an_field = new JTextField();
 		an_field.setBounds(150, 50, 170, 20);
 		naPanel.add(an_field);
 		an_field.setColumns(10);
@@ -57,7 +50,7 @@ public class newUI{
 		lblEmail.setBounds(94, 119, 46, 14);
 		naPanel.add(lblEmail);
 		
-		JTextField e_field = new JTextField();
+		e_field = new JTextField();
 		e_field.setBounds(150, 116, 170, 20);
 		naPanel.add(e_field);
 		e_field.setColumns(10);
@@ -77,11 +70,11 @@ public class newUI{
 		lblDescription.setBounds(63, 307, 77, 14);
 		naPanel.add(lblDescription);
 		
-		JPasswordField p_field = new JPasswordField();
+		p_field = new JPasswordField();
 		p_field.setBounds(150, 184, 170, 20);
 		naPanel.add(p_field);
 		
-		JPasswordField cp_field = new JPasswordField();
+		cp_field = new JPasswordField();
 		cp_field.setBounds(150, 243, 170, 20);
 		naPanel.add(cp_field);
 		
@@ -124,38 +117,26 @@ public class newUI{
 		
 		JLabel lblLength = new JLabel("Length:");
 		lblLength.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLength.setBounds(6, 139, 49, 14);
+		lblLength.setBounds(6, 139, 50, 14);
 		panel.add(lblLength);
 		
-		pl_field = new JTextField();
-		pl_field.setColumns(10);
-		pl_field.setBounds(52, 136, 49, 20);
-		panel.add(pl_field);
+		l_field = new JTextField();
+		l_field.setColumns(10);
+		l_field.setText("8");
+		l_field.setBounds(54, 136, 49, 20);
+		panel.add(l_field);
 		
 		JLabel lblPassword_1 = new JLabel("Password: ");
 		lblPassword_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPassword_1.setBounds(6, 247, 71, 14);
 		panel.add(lblPassword_1);
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
-		gp_field = new JTextField();
-		gp_field.setBounds(83, 244, 156, 20);
-		panel.add(gp_field);
-		gp_field.setColumns(10);
-<<<<<<< HEAD
-=======
-		JTextField textField_4 = new JTextField();
-		textField_4.setBounds(83, 244, 156, 20);
-		panel.add(textField_4);
-		textField_4.setColumns(10);
->>>>>>> 7cd740c21442231b53eed16657774e9f6d85b8f1
-=======
->>>>>>> origin/master
+		Genp_field = new JTextField();
+		Genp_field.setBounds(83, 244, 156, 20);
+		panel.add(Genp_field);
+		Genp_field.setColumns(10);
 		
-		JEditorPane editorPane = new JEditorPane();
+	 editorPane = new JEditorPane();
 		editorPane.setBounds(150, 307, 170, 116);
 		naPanel.add(editorPane);
 		
@@ -164,10 +145,15 @@ public class newUI{
 		btnGenerate.setBounds(6, 184, 233, 33);
 		btnGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				pw = new Password();
-				String genPass = pw.generateNewPassword(getChckbxLowerCase(), getChckbxUpperCase(), 
-														getChckbxNumbers(), getChckbxSpecialCharacters(), getPLength());
-				gp_field.setText(genPass);
+				gp = new Password();
+				boolean l, u, n, s;
+				int len;
+				l = getChckbxLowerCase();
+				u = getChckbxUpperCase();
+				n = getChckbxNumbers();
+				s = getChckbxSpecialCharacters();
+				len = getPassLength();
+				Genp_field.setText(gp.generateNewPassword(l, u, n, s, len));
 			}
 		});
 		panel.add(btnGenerate);
@@ -186,6 +172,43 @@ public class newUI{
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//Check valid fields
+				String ef = e_field.getText();
+				char arr[] = ef.toCharArray();
+				boolean atSign = false;
+				boolean dot = false;
+				boolean b = false;
+				if(ef.length()>=1)
+				{
+					for(int i = 0; i < arr.length; i++)
+					{
+						if(arr[i] == '@')
+							atSign= true;
+					}
+					for(int i = 0; i < arr.length; i++)
+					{
+						if(arr[i]== '.')
+							dot= true;
+					}
+					if( atSign ==true && dot == true)
+						b= true;
+					else{
+						b = false;
+					}
+				}
+				if(an_field.getText().length() > 0 && b && p_field.getText().equals(cp_field.getText()) && editorPane.getText().length() > 0)
+				{	
+					setters();
+//					Account a = new Account(an_field.getText(), e_field.getText(), p_field.getPassword().toString(), editorPane.getText() ,comboBox.getSelectedItem().toString() );
+					DataDriver dd = new DataDriver();
+//					dd.AccountList.add(a);
+					dd.SaveData(fn, an, e, p, d, c);
+				}
+				else
+				{
+					System.out.println("Error adding new account");
+				}
+				
 			}
 		});
 		btnSubmit.setFont(new Font("DialogInput", Font.BOLD, 13));
@@ -194,25 +217,25 @@ public class newUI{
 		naPanel.add(btnSubmit);
 	}
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
+	public void setters(){
+		an = an_field.getText();
+		e = e_field.getText();
+		p = p_field.getText(); 
+		d = editorPane.getText();
+		c = comboBox.getSelectedItem().toString();
+	}
+	
 	public boolean getChckbxLowerCase(){
-		if(chckbxLowerCase.isSelected() == true){
+		if(chckbxLowerCase.isSelected()){
 			return true;
 		}
 		else{
 			return false;
 		}
 	}
-
+	
 	public boolean getChckbxUpperCase(){
-		if(chckbxUpperCase.isSelected() == true){
+		if(chckbxUpperCase.isSelected()){
 			return true;
 		}
 		else{
@@ -221,7 +244,7 @@ public class newUI{
 	}
 	
 	public boolean getChckbxNumbers(){
-		if(chckbxNumbers.isSelected() == true){
+		if(chckbxNumbers.isSelected()){
 			return true;
 		}
 		else{
@@ -230,7 +253,7 @@ public class newUI{
 	}
 	
 	public boolean getChckbxSpecialCharacters(){
-		if(chckbxSpecialCharacters.isSelected() == true){
+		if(chckbxSpecialCharacters.isSelected()){
 			return true;
 		}
 		else{
@@ -238,20 +261,12 @@ public class newUI{
 		}
 	}
 	
-	public int getPLength(){
-		String s = pl_field.getText();
-		int pass = Integer.parseInt(s);
-		return pass;
+	public int getPassLength(){
+		String s = l_field.getText();
+		int length = Integer.parseInt(s);
+		return length;
 	}
 	
-	
-<<<<<<< HEAD
-=======
->>>>>>> 7cd740c21442231b53eed16657774e9f6d85b8f1
-=======
->>>>>>> origin/master
->>>>>>> fa41949a09fa10d0f3cf3cd4cd68d5de505acf16
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
 	public JPanel getPanel(){
 		naPanel.setVisible(true);
 		return naPanel;

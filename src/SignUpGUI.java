@@ -23,7 +23,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class SignUpGUI extends JFrame{
-	
+	private JFrame frame;
 	private JLabel top;
 	private JLabel about;
 	private JTextField fn_field;
@@ -55,11 +55,14 @@ public class SignUpGUI extends JFrame{
 	
 
 	public SignUpGUI() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame = new JFrame();
+		frame.setVisible(true);
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 5));
 		getContentPane().setBackground(new Color(255, 246, 230));
-		setSize(522, 503);
+		frame.setSize(522, 503);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
 		getContentPane().setLayout(null);
 		
 		JPanel nPanel = new JPanel();
@@ -191,30 +194,7 @@ public class SignUpGUI extends JFrame{
 		btnSignUP.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent ae) {
 				setters();
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 				if (AccountTest() == true){
-=======
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
-				AccountTest();
-				if (AccountTest() == true){
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-					su.AccountCreate(fn, ln, e, re, p, cp, un);
-=======
->>>>>>> 7cd740c21442231b53eed16657774e9f6d85b8f1
-=======
-=======
-<<<<<<< HEAD
-					su.AccountCreate(fn, ln, e, re, p, cp, un);
-=======
->>>>>>> 7cd740c21442231b53eed16657774e9f6d85b8f1
->>>>>>> fa41949a09fa10d0f3cf3cd4cd68d5de505acf16
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
 					su.AccountCreate(fn, ln, e, re, p, un);
 					frame.dispose();
 					
@@ -225,22 +205,6 @@ public class SignUpGUI extends JFrame{
 		  			"Welcome!",
 		  			JOptionPane.INFORMATION_MESSAGE,
 		  			new ImageIcon("otherJunk\\like3.png"));
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
->>>>>>> 74ffe4cd0c266b18ba3539dc76c1f6c313182933
->>>>>>> 7cd740c21442231b53eed16657774e9f6d85b8f1
-=======
-					su.AccountCreate(fn, ln, e, re, p, cp, un);
->>>>>>> parent of cc973a0... Class update
-<<<<<<< HEAD
-=======
->>>>>>> fa41949a09fa10d0f3cf3cd4cd68d5de505acf16
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
 				}
 			  } 
 			} );
@@ -269,7 +233,7 @@ public class SignUpGUI extends JFrame{
 		btnCancel.setBounds(140, 403, 102, 39);
 		btnCancel.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  setVisible(false);
+				  frame.dispose();
 			  } 
 			} );
 		getContentPane().add(btnCancel);
@@ -411,6 +375,8 @@ public class SignUpGUI extends JFrame{
 		lblRequired.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblRequired.setBounds(0, 77, 506, 20);
 		getContentPane().add(lblRequired);
+		
+		frame.add(getContentPane());
 	}
 
 	public void setters(){
@@ -481,22 +447,7 @@ public class SignUpGUI extends JFrame{
 		
 		if(su.isPasswordTest() && su.isPasswordConfirmTest() && su.isEmailRecoveryTest()
 		   && su.isEmailTest() && su.isFirstNameTest() && su.isLastNameTest()
-<<<<<<< HEAD
 		   && su.isUsernameTest() && su.UserCheck()){
-=======
-<<<<<<< HEAD
-		   && su.isUsernameTest()){
-			
->>>>>>> parent of cc973a0... Class update
-=======
-<<<<<<< HEAD
-		   && su.isUsernameTest() && su.UserCheck()){
-=======
-		   && su.isUsernameTest()){
-			
->>>>>>> parent of cc973a0... Class update
->>>>>>> fa41949a09fa10d0f3cf3cd4cd68d5de505acf16
->>>>>>> 0feb6e793c2980dccd3f720995334ce2f37cefb6
 			return true;
 		}
 		else{
