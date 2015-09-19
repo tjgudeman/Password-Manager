@@ -7,6 +7,8 @@ import javax.swing.JTextArea;
 import javax.swing.JLabel;
 
 
+// Creates WelcomePanel on the left once signed in with legal credentials
+
 public class WelcomePanelUI {
 	private JPanel welcomePanel;
 	
@@ -29,7 +31,12 @@ public class WelcomePanelUI {
 		howToTextArea.setWrapStyleWord(true);
 		howToTextArea.setLineWrap(true);
 		howToTextArea.setBackground(new Color(255, 246, 230));
-		howToTextArea.setText("1. To create an account, click on the plus sign in the upper hand tool bar, or under the drop down menu \"Account\", go to \"Add Account\" and select the account you want to create.\r\n\r\n2. Fill in the necessary information. Remember, a description is not required, but is recommended.\r\n\r\n3. Once you have filled out all the necessary information, click save.");
+		howToTextArea.setText("1. To create an account, click on the plus "
+				+ "sign in the upper hand tool bar, or under the drop down menu"
+				+ " \"Account\", go to \"Add Account\" and select the account you"
+				+ " want to create.\r\n\r\n2. Fill in the necessary information."
+				+ " Remember, a description is not required, but is recommended.\r\n\r\n3."
+				+ " Once you have filled out all the necessary information, click save.");
 		howToTextArea.setEditable(false);
 		howToTextArea.setBounds(10, 57, 185, 382);
 		welcomePanel.add(howToTextArea);

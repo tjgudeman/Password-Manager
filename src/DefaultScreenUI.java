@@ -23,6 +23,8 @@ import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.JEditorPane;
 
+
+//***Creates screen when first logged in
 public class DefaultScreenUI extends JFrame {
 
 	private JPanel panel;
@@ -383,6 +385,12 @@ public class DefaultScreenUI extends JFrame {
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.setIcon(new ImageIcon("C:menubar\\FileMenu\\exit3.png"));
+		
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);;
+				}});
+				
 		mnFile.add(mntmExit);
 		
 		/***********************************************************************************************

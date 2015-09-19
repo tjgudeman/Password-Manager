@@ -29,8 +29,12 @@ public class SignUp
 	private boolean passwordConfirmTest;
 	private boolean atSign;
 	private boolean dot;
+	private boolean b;
 
-	
+	public SignUp()
+	{
+		
+	}
 	public SignUp(String fn, String ln, String e, String re, String p, String cp, String un)
 	{	
 		//Assigning strings from JTextFields
@@ -58,8 +62,9 @@ public class SignUp
 			firstNameTest = true;
 		if(lastName.length()>=1)
 			lastNameTest=true;
-		emailTest= emailTesting(email, false);
-		emailRecoveryTest = RecEmailTesting(emailRecovery, false);
+		emailTest= emailTesting(email);
+		emailRecoveryTest = emailTesting(emailRecovery);
+		System.out.println(emailRecoveryTest);
 		if(username.length()>=1)
 			usernameTest=true;
 		if(password.length() >=1)
@@ -73,7 +78,7 @@ public class SignUp
 	}
 	
 	//Email Test Class (so it can be duplicated for the recovery email)
-	public boolean emailTesting(String a, boolean b)
+	public boolean emailTesting(String a)
 	{
 		
 		if(a.length()>=1)
@@ -94,30 +99,8 @@ public class SignUp
 		return b;
 	}
 	
-	public boolean RecEmailTesting(String a, boolean b)
-	{
-		
-		if(a.length()>=1)
-		{
-			for(int i = 0; i < a.length(); i++)
-			{
-				if(a.charAt(i) == '@')
-					atSign= true;
-				if(a.charAt(i)== '.')
-					dot= true;
-			}
-			if( atSign ==true && dot == true)
-				b= true;
-			else{
-				b = false;
-			}
-		}
-		else{
-			b = true;
-		}
-		return b;
-	}
 	
+	//Creating file based on username that has each character rotated 13 places
 	public boolean UserCheck(){
 		String s = rotate(username);
 		String filename = "C:\\PasswordManager\\" + s + ".pwm";
@@ -139,8 +122,6 @@ public class SignUp
 			array[3] = re;
 			array[4] = un;
 			array[5] = p;
-			
-			
 			
 			String s = rotate(un);
 			String dir = "C:\\PasswordManager";
@@ -185,11 +166,12 @@ public class SignUp
 			}
 		    
 		} catch (FileNotFoundException p3) {
-			System.out.print("Sean, your dumb");
+			System.out.print("File is not found");
 			p3.printStackTrace();
 		}
 	}
 	
+	//Simple rotate13 for minimal security
 	public String rotate(String un){
 		String str = "";
         for (int i = 0; i < un.length(); i++) 
@@ -203,6 +185,7 @@ public class SignUp
         }
         return str;
 	}
+	
 	public boolean isFirstNameTest() {
 		return firstNameTest;
 	}

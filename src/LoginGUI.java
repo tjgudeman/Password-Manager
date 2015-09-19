@@ -26,6 +26,8 @@ public class LoginGUI extends JFrame{
 	private Login login;
 	private DefaultScreenUI dsu;
 	private String u, p;
+	
+	
 	public LoginGUI() {
 		frame = new JFrame();
 		frame.setVisible(true);
@@ -73,16 +75,17 @@ public class LoginGUI extends JFrame{
 		btnLogin.setBackground(new Color(154, 202, 141));
 		btnLogin.setBounds(245, 174, 102, 39);
 		getContentPane().add(btnLogin);
+		
+		//Logic for Login Button
 		btnLogin.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) {
 				  setters();
-				  login = new Login(u, p);
+				  login = new Login(u, p); //PAssing username and Password
 				  String file = login.rotate(u);
 				  String path = new String("C:\\PasswordManager\\master.pwm");
 				  try {
 					if(login.readFile(path, u, p) == true){
 						btn_lnError.setVisible(false);
-//						pull user file
 						dsu = new DefaultScreenUI(file);
 						frame.dispose();
 					  }
@@ -90,7 +93,6 @@ public class LoginGUI extends JFrame{
 						btn_lnError.setVisible(true);
 					}
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			  } 
@@ -110,10 +112,11 @@ public class LoginGUI extends JFrame{
 		btnCancel.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
 				  frame.dispose();
-				 // PmMockupUI.setVisible(false);
+				//  frame.setVisible(false); // **For debugging
 			  } 
 			} );
 		
+		// Handling error with a login item
 		btn_lnError = new JButton(new ImageIcon("otherJunk\\error.png"));
 		btn_lnError.setBounds(329, 115, 20, 20);
 		btn_lnError.setBackground(new Color(255, 246, 230));

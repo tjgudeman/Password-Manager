@@ -6,17 +6,22 @@ import java.io.PrintWriter;
 public class newAccount
 {
 	private String accountName, email, password, confirmPassword, description;
-	private boolean accountNameTest, emailTest, passwordTest, confirmPasswordTest,atSign, dot;
+	private boolean accountNameTest, emailTest, passwordTest, confirmPasswordTest,atSign, dot, b;
 
 	
 	public newAccount(String n, String e, String p, String cp, String de)
 	{
 	
+		SignUp su = new SignUp();
+		
 		accountName = n;
 		email = e;
 		password = p;
 		confirmPassword = cp;
 		description= de;
+		
+		if(description.length() < 1)
+			description = " ";
 		
 		//Default booleans
 		accountNameTest= false;
@@ -29,12 +34,14 @@ public class newAccount
 		//Logic
 		if(accountName.length()>=1)
 			accountNameTest = true;
-		emailTest= emailTesting(email, emailTest);
+		emailTest= su.emailTesting(email);
 		if(password.length() >=1)
 			passwordTest = true;
 		if(password == confirmPassword)
 			confirmPasswordTest = true;
 	}
+	
+	// Creating account
 	public void AccountCreate(String c,String n, String e, String p, String de){
 			String array[] = new String[5];
 			array[0] = c;
@@ -47,26 +54,7 @@ public class newAccount
 				System.out.println(array[i]);
 			}
 	}
-public boolean emailTesting(String a, boolean b)
-	{
-		if(a.length()>=1)
-		{
-			for(int i = 0; i < a.length(); i++)
-			{
-				if(a.charAt(i) == '@')
-					atSign= true;
-					if(a.charAt(i)== '.')
-					dot= true;
-			}
-			if( atSign ==true && dot == true)
-				b= true;
-			else{
-				b = false;
-			}
-		}
-		return b;
-	}
-	
+
 	
 
 	public boolean AccountNameTest() {

@@ -17,6 +17,7 @@ public class Login {
 		String path = new String("C:\\PasswordManager\\master.pwm");
 	}
 	
+	//Rotate function which rotates each char 13 places in the alphabet.
 	public String rotate(String un){
 		String str = "";
         for (int i = 0; i < un.length(); i++) 
@@ -54,6 +55,7 @@ public class Login {
 		return check;
 	}
 	
+	//Checking to see if username and password are on the right line in the file
 	public boolean checkCred(String[] arr, String u, String p){
 		if (arr[4].equals(u)){
 			if (arr[5].equals(p)){

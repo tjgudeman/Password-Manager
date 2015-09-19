@@ -32,6 +32,8 @@ public class Password {
 		this.pass = pass;
 	}
 
+	
+	//Generates new password by build each part and storing it in arrayList
 	public static String generateNewPassword(boolean l, boolean u, boolean n,
 			boolean s, int len) {
 		ArrayList<Integer> cs = new ArrayList<Integer>();
@@ -71,6 +73,8 @@ public class Password {
 		return sb.toString();
 	}
 
+	
+	//Testing strength of password
 	public int passwordStrength() {
 
 		int len = pass.length();
@@ -93,6 +97,7 @@ public class Password {
 
 	}
 
+	// Check for symbol
 	public boolean symbolArray(char c) {
 
 		char[] sArray = { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
@@ -103,14 +108,13 @@ public class Password {
 				return true;
 			}
 		}
-
 		return false;
-
 	}
 
+	//Check for number
 	public boolean numberArray(char c) {
 
-		char[] nArray = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+		char[] nArray = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
 		for (int i = 0; i < nArray.length; i++) {
 			if (nArray[i] == c) {
@@ -118,11 +122,10 @@ public class Password {
 
 			}
 		}
-
 		return false;
-
 	}
 
+	//Check for upperCase
 	public boolean upperCaseArray(char c) {
 
 		char[] upCaseArray = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
@@ -134,11 +137,11 @@ public class Password {
 				return true;
 			}
 		}
-
 		return false;
 
 	}
 
+	//Check for lowerCase
 	public boolean lowerCaseArray(char c) {
 
 		char[] lowCaseArray = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
@@ -150,11 +153,11 @@ public class Password {
 				return true;
 			}
 		}
-
 		return false;
 
 	}
 
+	// Scoring password
 	public int scoreMethod(int length, int s, int n, int low, int up) {
 
 		if ((pass.length() >= 14)

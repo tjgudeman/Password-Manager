@@ -85,7 +85,6 @@ public class listUI extends JFrame{
 	    listPanel.setBounds(0, 46, 796, 484);
 	    listPanel.setBackground(new Color(255, 246, 230));
 		listPanel.setLayout(null);
-//		listPanel.add(inTb);
 		listPanel.setVisible(true);
 		
 		JLabel lblAccountName_1 = new JLabel("Account Name");
@@ -113,7 +112,7 @@ public class listUI extends JFrame{
 		lblPassword.setBounds(674, 74, 113, 14);
 		listPanel.add(lblPassword);
 		
-		JLabel lblSearch = new JLabel("Search: ");
+		JLabel lblSearch = new JLabel("Search Username or Description: ");
 		lblSearch.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSearch.setBounds(561, 42, 86, 14);
 		listPanel.add(lblSearch);

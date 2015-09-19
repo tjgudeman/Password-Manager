@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-
+//*** Creates the user interface for storing a new password ***
 public class newUI{
 	private JTextField an_field;
 	private JTextField e_field;
@@ -133,6 +133,7 @@ public class newUI{
 		
 		Genp_field = new JTextField();
 		Genp_field.setBounds(83, 244, 156, 20);
+		Genp_field.setEditable(false);
 		panel.add(Genp_field);
 		Genp_field.setColumns(10);
 		
@@ -152,8 +153,13 @@ public class newUI{
 				u = getChckbxUpperCase();
 				n = getChckbxNumbers();
 				s = getChckbxSpecialCharacters();
+				
+				if( l== false && u== false && n == false && s== false)
+					Genp_field.setText("");
+				else{
 				len = getPassLength();
 				Genp_field.setText(gp.generateNewPassword(l, u, n, s, len));
+				}
 			}
 		});
 		panel.add(btnGenerate);
