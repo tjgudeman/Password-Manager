@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 // Creates WelcomePanel on the left once signed in with legal credentials
 
 public class WelcomePanelUI {
-	private JPanel welcomePanel;
+	public static JPanel welcomePanel;
 	
 	public WelcomePanelUI(){
 		welcomePanel = new JPanel();
@@ -48,9 +48,4 @@ public class WelcomePanelUI {
 		return welcomePanel;
 	}
 
-	//***I did this!**
-	public void setVisible(boolean b) {
-		welcomePanel.setVisible(b);
-		
-	}
 }

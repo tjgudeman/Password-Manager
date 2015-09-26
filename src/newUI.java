@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -9,12 +10,14 @@ import javax.swing.border.TitledBorder;
 
 //*** Creates the user interface for storing a new password ***
 public class newUI{
+	private JButton btn_eError;
+	private JButton btn_pError;
 	private JTextField an_field;
 	private JTextField e_field;
 	private JPasswordField p_field;
 	private JPasswordField cp_field;
 	private JEditorPane editorPane;
-	private JPanel naPanel;
+	public static JPanel naPanel;
 	private JComboBox comboBox;
 	private JCheckBox chckbxLowerCase;
 	private JCheckBox chckbxUpperCase;
@@ -78,6 +81,38 @@ public class newUI{
 		cp_field.setBounds(150, 243, 170, 20);
 		naPanel.add(cp_field);
 		
+		URL error = DefaultScreenUI.class.getResource("/otherJunk/error.png");
+		ImageIcon all = new ImageIcon(error);
+		btn_eError = new JButton(all);
+		btn_eError.setBounds(330, 113, 25, 23);
+		btn_eError.setBackground(new Color(255, 246, 230));
+		btn_eError.setVisible(false);
+		btn_eError.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  JOptionPane.showMessageDialog(naPanel,
+	  						"Email must contain an '@' and '.'",
+	  						"Error!",
+	  						JOptionPane.INFORMATION_MESSAGE,
+	  						new ImageIcon("otherJunk\\error.png"));
+			  } 
+			} );
+		naPanel.add(btn_eError);
+		
+		btn_pError = new JButton(all);
+		btn_pError.setBounds(295, 209, 25, 23);
+		btn_pError.setBackground(new Color(255, 246, 230));
+		btn_pError.setVisible(false);
+		btn_pError.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  JOptionPane.showMessageDialog(naPanel,
+	  						"Password do not match!",
+	  						"Error!",
+	  						JOptionPane.INFORMATION_MESSAGE,
+	  						new ImageIcon("otherJunk\\error.png"));
+			  } 
+			} );
+		naPanel.add(btn_pError);
+		
 		JLabel lblCategory = new JLabel("Category:\r\n");
 		lblCategory.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCategory.setBounds(351, 53, 57, 14);
@@ -131,6 +166,7 @@ public class newUI{
 		lblPassword_1.setBounds(6, 247, 71, 14);
 		panel.add(lblPassword_1);
 		
+		
 		Genp_field = new JTextField();
 		Genp_field.setBounds(83, 244, 156, 20);
 		Genp_field.setEditable(false);
@@ -173,6 +209,12 @@ public class newUI{
 		btnCancel.setFont(new Font("DialogInput", Font.BOLD, 13));
 		btnCancel.setBackground(new Color(154, 202, 141));
 		btnCancel.setBounds(185, 434, 102, 39);
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			naPanel.removeAll();
+			DefaultScreenUI.panel.setVisible(true);
+			}
+		});
 		naPanel.add(btnCancel);
 		
 		JButton btnSubmit = new JButton("Submit");
@@ -202,7 +244,7 @@ public class newUI{
 						temp = false;
 					}
 				}
-				if(an_field.getText().length() > 0 && temp && p_field.getText().equals(cp_field.getText()))
+				if(temp && p_field.getText().equals(cp_field.getText()))
 				{	
 
 					setters();
@@ -211,23 +253,41 @@ public class newUI{
 					
 					//Close window and go back to home or make a congrats?
 					naPanel.setVisible(false);
-					
-					WelcomePanelUI n = new WelcomePanelUI();
-					n.setVisible(true);
-				
-					
+					DefaultScreenUI.panel.setVisible(true);
 				}
-				else
+				if(!(p_field.getText().equals(cp_field.getText()))) {
+					btn_pError.setVisible(true);
+					if(!(temp))
+					{
+						btn_eError.setVisible(true);
+					}
+					else{
+						btn_eError.setVisible(false);
+					}
+				}
+				else{
+					btn_pError.setVisible(false);
+				}
+				if(!(temp))
 				{
-					System.out.println("Error adding new account");
+					btn_eError.setVisible(true);
+					if(!(p_field.getText().equals(cp_field.getText()))){
+						btn_pError.setVisible(true);
+					}
+					else{
+						btn_pError.setVisible(false);
+					}
 				}
-				
+				else{
+					btn_eError.setVisible(false);
+				}
 			}
 		});
 		btnSubmit.setFont(new Font("DialogInput", Font.BOLD, 13));
 		btnSubmit.setBackground(new Color(154, 202, 141));
 		btnSubmit.setBounds(404, 434, 102, 39);
 		naPanel.add(btnSubmit);
+		
 	}
 	
 	public void setters(){
@@ -293,5 +353,4 @@ public class newUI{
 	public void setStatus(String s){
 		comboBox.setSelectedItem(s);
 	}
-
 }

@@ -112,9 +112,9 @@ public class listUI extends JFrame{
 		lblPassword.setBounds(674, 74, 113, 14);
 		listPanel.add(lblPassword);
 		
-		JLabel lblSearch = new JLabel("Search Username or Description: ");
-		lblSearch.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblSearch.setBounds(561, 42, 86, 14);
+		JLabel lblSearch = new JLabel("Search Account Name: ");
+		lblSearch.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblSearch.setBounds(483, 42, 164, 14);
 		listPanel.add(lblSearch);
 		
 		s_field = new JTextField();
@@ -133,7 +133,7 @@ public class listUI extends JFrame{
 		s_field.setColumns(10);
 		table = new JTable();
 		table.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		table.setBounds(228, 99, 584, 374);
+		table.setBounds(228, 99, 558, 374);
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 
 			@Override
@@ -212,7 +212,7 @@ public class listUI extends JFrame{
             }
             reader.close();
             table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            table.getColumnModel().getColumn(5).setMaxWidth(0);
+            table.removeColumn(table.getColumnModel().getColumn(table.getColumnCount() - 1));
          }
         catch(IOException e){
             JOptionPane.showMessageDialog(null, "Error");

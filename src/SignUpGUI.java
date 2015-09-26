@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -144,11 +145,6 @@ public class SignUpGUI extends JFrame{
 		lblPassword.setBounds(46, 302, 81, 14);
 		getContentPane().add(lblPassword);
 		
-		JLabel lblPasswordStrength = new JLabel("Password Strength");
-		lblPasswordStrength.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPasswordStrength.setBounds(331, 282, 146, 14);
-		getContentPane().add(lblPasswordStrength);
-		
 		p_field = new JPasswordField();
 		p_field.setBounds(140, 299, 146, 20);
 		getContentPane().add(p_field);
@@ -241,8 +237,9 @@ public class SignUpGUI extends JFrame{
 /***********************************************************************************************
  *********************************Error btns Components*****************************************
  ***********************************************************************************************/
-		
-		btn_lnError = new JButton(new ImageIcon("otherJunk\\error.png"));
+		URL error = DefaultScreenUI.class.getResource("/otherJunk/error.png");
+		ImageIcon all = new ImageIcon(error);
+		btn_lnError = new JButton(all);
 		btn_lnError.setBounds(472, 105, 20, 20);
 		btn_lnError.setBackground(new Color(255, 246, 230));
 		btn_lnError.setVisible(false);
@@ -257,7 +254,7 @@ public class SignUpGUI extends JFrame{
 			} );
 		getContentPane().add(btn_lnError);
 		
-		btn_unError = new JButton(new ImageIcon("otherJunk\\error.png"));
+		btn_unError = new JButton(all);
 		btn_unError.setBounds(298, 251, 20, 20);
 		btn_unError.setBackground(new Color(255, 246, 230));
 		btn_unError.setVisible(false);
@@ -272,7 +269,7 @@ public class SignUpGUI extends JFrame{
 			} );
 		getContentPane().add(btn_unError);
 		
-		btn_unError2 = new JButton(new ImageIcon("otherJunk\\error.png"));
+		btn_unError2 = new JButton(all);
 		btn_unError2.setBounds(298, 251, 20, 20);
 		btn_unError2.setBackground(new Color(255, 246, 230));
 		btn_unError2.setVisible(false);
@@ -287,7 +284,7 @@ public class SignUpGUI extends JFrame{
 			} );
 		getContentPane().add(btn_unError2);
 		
-		btn_eError = new JButton(new ImageIcon("otherJunk\\error.png"));
+		btn_eError = new JButton(all);
 		btn_eError.setBounds(472, 153, 20, 20);
 		btn_eError.setBackground(new Color(255, 246, 230));
 		btn_eError.setVisible(false);
@@ -302,7 +299,7 @@ public class SignUpGUI extends JFrame{
 			} );
 		getContentPane().add(btn_eError);
 		
-		btn_reError = new JButton(new ImageIcon("otherJunk\\error.png"));
+		btn_reError = new JButton(all);
 		btn_reError.setBounds(472, 202, 20, 20);
 		btn_reError.setBackground(new Color(255, 246, 230));
 		btn_reError.setVisible(false);
@@ -317,7 +314,7 @@ public class SignUpGUI extends JFrame{
 			} );
 		getContentPane().add(btn_reError);
 		
-		btn_fnError = new JButton(new ImageIcon("otherJunk\\error.png"));
+		btn_fnError = new JButton(all);
 		btn_fnError.setBounds(247, 105, 20, 20);
 		btn_fnError.setBackground(new Color(255, 246, 230));
 		btn_fnError.setVisible(false);
@@ -332,7 +329,7 @@ public class SignUpGUI extends JFrame{
 			} );
 		getContentPane().add(btn_fnError);
 		
-		btn_pError = new JButton(new ImageIcon("otherJunk\\error.png"));
+		btn_pError = new JButton(all);
 		btn_pError.setBounds(298, 299, 20, 20);
 		btn_pError.setBackground(new Color(255, 246, 230));
 		btn_pError.setVisible(false);
@@ -347,7 +344,7 @@ public class SignUpGUI extends JFrame{
 			} );
 		getContentPane().add(btn_pError);
 		
-		btn_cpError = new JButton(new ImageIcon("otherJunk\\error.png"));
+		btn_cpError = new JButton(all);
 		btn_cpError.setBounds(298, 299, 20, 20);
 		btn_cpError.setBackground(new Color(255, 246, 230));
 		btn_cpError.setVisible(false);
@@ -361,13 +358,6 @@ public class SignUpGUI extends JFrame{
 			  } 
 			} );
 		getContentPane().add(btn_cpError);
-		
-		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setMinimum(0);
-		progressBar.setMaximum(3);
-		progressBar.setBounds(331, 302, 146, 14);
-		getContentPane().add(progressBar);
 		
 		JLabel lblRequired = new JLabel("* required");
 		lblRequired.setHorizontalAlignment(SwingConstants.CENTER);

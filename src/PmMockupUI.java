@@ -15,21 +15,23 @@ public class PmMockupUI extends JFrame{
 	private JLabel about;
 	private LoginGUI liView;
 	private SignUpGUI sugView;
+	public static JFrame host;
 	
 	public PmMockupUI() {
-		this.setSize(480, 533);
-		this.setResizable(false);
+		host = new JFrame();
+		host.setSize(480, 533);
+		host.setResizable(false);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		host.setLocation(dim.width/2-host.getSize().width/2, dim.height/2-host.getSize().height/2);
+		host.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		JPanel nPanel = new JPanel();
-		getContentPane().add(nPanel, BorderLayout.NORTH);
+		host.getContentPane().add(nPanel, BorderLayout.NORTH);
 		nPanel.setBackground(new Color(100, 160, 206));
 		
 		JPanel cPanel = new JPanel();
 		cPanel.setBackground(new Color(255, 246, 230));
-		getContentPane().add(cPanel, BorderLayout.CENTER);
+		host.getContentPane().add(cPanel, BorderLayout.CENTER);
 		
 		welcome = new JLabel("<html>Welcome to your Password<br>Manager</html>");
 		welcome.setHorizontalAlignment(SwingConstants.CENTER);
@@ -53,6 +55,8 @@ public class PmMockupUI extends JFrame{
 		btnLogIn.setBounds(295, 326, 119, 54);
 		btnLogIn.setBackground(new Color(154, 202, 141));
 		cPanel.add(btnLogIn);
+		host.setVisible(true);
+		this.setVisible(false);
 		
 		//Login user. Launch LoginGUI
 		btnLogIn.addActionListener(new ActionListener() { 

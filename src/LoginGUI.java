@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -88,6 +89,7 @@ public class LoginGUI extends JFrame{
 						btn_lnError.setVisible(false);
 						dsu = new DefaultScreenUI(file);
 						frame.dispose();
+						PmMockupUI.host.dispose();
 					  }
 					else{
 						btn_lnError.setVisible(true);
@@ -117,14 +119,16 @@ public class LoginGUI extends JFrame{
 			} );
 		
 		// Handling error with a login item
-		btn_lnError = new JButton(new ImageIcon("otherJunk\\error.png"));
+		URL error = DefaultScreenUI.class.getResource("/otherJunk/error.png");
+		ImageIcon all = new ImageIcon(error);
+		btn_lnError = new JButton(all);
 		btn_lnError.setBounds(329, 115, 20, 20);
 		btn_lnError.setBackground(new Color(255, 246, 230));
 		btn_lnError.setVisible(false);
 		btn_lnError.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
 				  JOptionPane.showMessageDialog(getContentPane(),
-	  						"Either Username and Password is incorrect",
+	  						"Either Username and Password are incorrect",
 	  						"Error!",
 	  						JOptionPane.INFORMATION_MESSAGE,
 	  						new ImageIcon("otherJunk\\error.png"));

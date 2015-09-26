@@ -28,7 +28,7 @@ import javax.swing.JEditorPane;
 //***Creates screen when first logged in
 public class DefaultScreenUI extends JFrame {
 
-	private JPanel panel;
+	public static JPanel panel;
 	private listUI listView;
 	private JPanel listPanel;
 	private JPanel newPanel;
@@ -84,7 +84,8 @@ public class DefaultScreenUI extends JFrame {
 		lblMail.setBounds(40, 172, 99, 14);
 		panel.add(lblMail);
 
-		ImageIcon mail = new ImageIcon("big/mail.png");
+		URL mailURL = DefaultScreenUI.class.getResource("/big/mail.png");			
+		ImageIcon mail = new ImageIcon(mailURL);
 		JButton btnMail = new JButton(mail);
 		btnMail.setBackground(new Color(245, 147, 43));
 		btnMail.setBounds(40, 64, 99, 97);
@@ -100,7 +101,6 @@ public class DefaultScreenUI extends JFrame {
 				frame.getContentPane().add(listPanel);
 				panel.setVisible(false);
 				welcomePanel.setVisible(false);
-				frame.getContentPane().add(sidePanel);
 				if(newPanel != null){
 					frame.remove(newPanel);
 				}
@@ -117,7 +117,8 @@ public class DefaultScreenUI extends JFrame {
 		lblUsers.setBounds(40, 402, 99, 14);
 		panel.add(lblUsers);
 
-		ImageIcon user = new ImageIcon("big\\user.png");
+		URL userURL = DefaultScreenUI.class.getResource("/big/user.png");
+		ImageIcon user = new ImageIcon(userURL);
 		JButton btnUsers = new JButton(user);
 		btnUsers.setBackground(new Color(76, 45, 169));
 		btnUsers.setBounds(40, 295, 99, 96);
@@ -151,7 +152,8 @@ public class DefaultScreenUI extends JFrame {
 		lblSocial.setBounds(178, 172, 99, 14);
 		panel.add(lblSocial);
 
-		ImageIcon social = new ImageIcon("big\\social.png");
+		URL socialURL = DefaultScreenUI.class.getResource("/big/social.png");
+		ImageIcon social = new ImageIcon(socialURL);
 		JButton btnSocial = new JButton(social);
 		btnSocial.setBackground(new Color(245, 62, 43));
 		btnSocial.setBounds(178, 64, 99, 97);
@@ -186,7 +188,8 @@ public class DefaultScreenUI extends JFrame {
 		lblShopping.setBounds(316, 172, 99, 14);
 		panel.add(lblShopping);
 
-		ImageIcon buy = new ImageIcon("big\\shop.png");
+		URL buyURL = DefaultScreenUI.class.getResource("/big/shop.png");
+		ImageIcon buy = new ImageIcon(buyURL);
 		JButton btnPurchase = new JButton(buy);
 		btnPurchase.setBackground(new Color(90, 186, 119));
 		btnPurchase.setBounds(316, 64, 99, 97);
@@ -221,7 +224,8 @@ public class DefaultScreenUI extends JFrame {
 		lblBanking.setBounds(454, 172, 99, 14);
 		panel.add(lblBanking);
 
-		ImageIcon bank = new ImageIcon("big\\bank.png");
+		URL bankURL = DefaultScreenUI.class.getResource("/big/bank.png");
+		ImageIcon bank = new ImageIcon(bankURL);
 		JButton btnBanking = new JButton(bank);
 		btnBanking.setBackground(new Color(36, 115, 149));
 		btnBanking.setBounds(454, 64, 99, 97);
@@ -256,7 +260,8 @@ public class DefaultScreenUI extends JFrame {
 		lblSchoolwork.setBounds(178, 402, 99, 14);
 		panel.add(lblSchoolwork);
 
-		ImageIcon work = new ImageIcon("big\\work.png");
+		URL workURL = DefaultScreenUI.class.getResource("/big/work.png");
+		ImageIcon work = new ImageIcon(workURL);
 		JButton btnWork = new JButton(work);
 		btnWork.setBackground(new Color(123, 122, 123));
 		btnWork.setBounds(178, 295, 99, 96);
@@ -291,7 +296,8 @@ public class DefaultScreenUI extends JFrame {
 		lblOther.setBounds(316, 402, 99, 14);
 		panel.add(lblOther);
 
-		ImageIcon other = new ImageIcon("big\\other.png");
+		URL otherURL = DefaultScreenUI.class.getResource("/big/user.png");
+		ImageIcon other = new ImageIcon(otherURL);
 		JButton btnOther = new JButton(other);
 		btnOther.setBackground(new Color(189, 39, 124));
 		btnOther.setBounds(316, 295, 99, 96);
@@ -325,7 +331,8 @@ public class DefaultScreenUI extends JFrame {
 		lblAll.setBounds(454, 402, 99, 14);
 		panel.add(lblAll);
 
-		ImageIcon all = new ImageIcon("big\\all.png");
+		URL allURL = DefaultScreenUI.class.getResource("/big/all.png");
+		ImageIcon all = new ImageIcon(allURL);
 		JButton btnAll = new JButton(all);
 		btnAll.setBackground(new Color(236, 219, 49));
 		btnAll.setBounds(454, 295, 99, 96);
@@ -362,7 +369,6 @@ public class DefaultScreenUI extends JFrame {
 		URL homeUrl = DefaultScreenUI.class.getResource("/toolbar/home.png"); 
 		ImageIcon home = new ImageIcon(homeUrl);
 
-	//	ImageIcon newie = new ImageIcon(DefaultScreenUI.getToolbar("/toolbar/add.png"));
 		URL newieUrl = DefaultScreenUI.class.getResource("/toolbar/add.png");
 		ImageIcon newie = new ImageIcon(newieUrl);
 
@@ -383,19 +389,25 @@ public class DefaultScreenUI extends JFrame {
 		menuBar.add(mnFile);
 
 		JMenuItem mntmSave = new JMenuItem("Save");
-		mntmSave.setIcon(new ImageIcon("menubar\\FileMenu\\save1.png"));
+//		URL mntmSaveURL = DefaultScreenUI.class.getResource("/menubar/FileMenu.save1/png");
+		mntmSave.setIcon(new ImageIcon("C:/Users/trevor.gudeman/Desktop/Workspace/Password-Manager/menubar/FileMenu/save1.png"));
 		mnFile.add(mntmSave);
 
 		JMenuItem mntmLogout = new JMenuItem("Logout");
 		mntmLogout.setIcon(new ImageIcon("menubar\\FileMenu\\logout8.png"));
+		mntmLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				PmMockupUI.host.setVisible(true);
+				}});
 		mnFile.add(mntmLogout);
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
-		mntmExit.setIcon(new ImageIcon("C:menubar\\FileMenu\\exit3.png"));
+		mntmExit.setIcon(new ImageIcon("C:/Users/trevor.gudeman/Desktop/Workspace/Password-Manager/FileMenu/exit3.png"));
 		
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);;
+				System.exit(0);
 				}});
 				
 		mnFile.add(mntmExit);
@@ -409,7 +421,8 @@ public class DefaultScreenUI extends JFrame {
 		
 		
 		JMenu mnNewAccount = new JMenu("New Account");
-		mnNewAccount.setIcon(new ImageIcon("menubar\\AccountMenu\\create1.png"));
+		//URL mnNewAccountURL = DefaultScreenUI.resource.
+		mnNewAccount.setIcon(new ImageIcon("C:/Users/trevor.gudeman/Desktop/Workspace/Password-Manager/AccountMenu/create1.png"));
 		mnAccount.add(mnNewAccount);
 
 		JMenuItem mntmNewMenuItem = new JMenuItem("Mail Account");
@@ -419,6 +432,10 @@ public class DefaultScreenUI extends JFrame {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
 				}
+				if(newUI.naPanel != null){
+					newUI.naPanel.setVisible(false);
+				}
+				WelcomePanelUI.welcomePanel.setVisible(true);
 				newView = new newUI(path);
 				newView.setStatus("Mail");
 				panel.setVisible(false);
@@ -429,6 +446,8 @@ public class DefaultScreenUI extends JFrame {
 		});
 		mntmNewMenuItem.setIcon(new ImageIcon("menubar\\AccountMenu\\mail59.png"));
 		mnNewAccount.add(mntmNewMenuItem);
+				
+
 
 		JMenuItem mntmSocialAccount = new JMenuItem("Social Account");
 		mntmSocialAccount.addActionListener(new ActionListener() {
@@ -437,6 +456,10 @@ public class DefaultScreenUI extends JFrame {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
 				}
+				if(newUI.naPanel != null){
+					newUI.naPanel.setVisible(false);
+				}
+				WelcomePanelUI.welcomePanel.setVisible(true);
 				newView = new newUI(path);
 				newView.setStatus("Social");
 				panel.setVisible(false);
@@ -445,6 +468,7 @@ public class DefaultScreenUI extends JFrame {
 				frame.getContentPane().add(newPanel);
 			}
 		});
+		
 		mntmSocialAccount.setIcon(new ImageIcon(
 				"menubar\\AccountMenu\\social.png"));
 		mnNewAccount.add(mntmSocialAccount);
@@ -456,6 +480,10 @@ public class DefaultScreenUI extends JFrame {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
 				}
+				if(newUI.naPanel != null){
+					newUI.naPanel.setVisible(false);
+				}
+				WelcomePanelUI.welcomePanel.setVisible(true);
 				newView = new newUI(path);
 				panel.setVisible(false);
 				newView.setStatus("Shopping");
@@ -475,6 +503,10 @@ public class DefaultScreenUI extends JFrame {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
 				}
+				if(newUI.naPanel != null){
+					newUI.naPanel.setVisible(false);
+				}
+				WelcomePanelUI.welcomePanel.setVisible(true);
 				newView = new newUI(path);
 				panel.setVisible(false);
 				newView.setStatus("Banking");
@@ -494,9 +526,13 @@ public class DefaultScreenUI extends JFrame {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
 				}
+				if(newUI.naPanel != null){
+					newUI.naPanel.setVisible(false);
+				}
+				WelcomePanelUI.welcomePanel.setVisible(true);
 				newView = new newUI(path);
 				panel.setVisible(false);
-				newView.setStatus("User Account");
+				newView.setStatus("Users");
 				newPanel = newView.getPanel();
 				newPanel.setVisible(true);
 				frame.getContentPane().add(newPanel);
@@ -512,6 +548,10 @@ public class DefaultScreenUI extends JFrame {
 					listPanel.setVisible(false);
 					frame.remove(listPanel);
 				}
+				if(newUI.naPanel != null){
+					newUI.naPanel.setVisible(false);
+				}
+				WelcomePanelUI.welcomePanel.setVisible(true);
 				newView = new newUI(path);
 				panel.setVisible(false);
 				newView.setStatus("Work/Edu");
@@ -532,6 +572,10 @@ public class DefaultScreenUI extends JFrame {
 					frame.remove(listPanel);
 					
 				}
+				if(newUI.naPanel != null){
+					newUI.naPanel.setVisible(false);
+				}
+				WelcomePanelUI.welcomePanel.setVisible(true);
 				newView = new newUI(path);
 				panel.setVisible(false);
 				newView.setStatus("Other");
@@ -540,10 +584,6 @@ public class DefaultScreenUI extends JFrame {
 			}
 		});
 		mnNewAccount.add(mntmOtherAccount);
-
-		JMenuItem mnRemoveAccount = new JMenuItem("Remove Account");
-		mnRemoveAccount.setIcon(new ImageIcon("menubar\\AccountMenu\\remove.png"));
-		mnAccount.add(mnRemoveAccount);
 		
 		/***********************************************************************************************
 		 *************************************Help Menu*******************************************
