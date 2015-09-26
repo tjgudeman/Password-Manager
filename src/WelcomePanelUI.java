@@ -47,4 +47,10 @@ public class WelcomePanelUI {
 		welcomePanel.setVisible(true);
 		return welcomePanel;
 	}
+
+	//***I did this!**
+	public void setVisible(boolean b) {
+		welcomePanel.setVisible(b);
+		
+	}
 }

@@ -24,7 +24,7 @@ public class newUI{
 	private Password gp;
 	private JTextField Genp_field;
 	private String fn;
-	private String an, e, p, d, c;
+	private String an, e, p, c, d;
 	
 	public newUI(String filename){
 		fn = filename;
@@ -183,7 +183,7 @@ public class newUI{
 				char arr[] = ef.toCharArray();
 				boolean atSign = false;
 				boolean dot = false;
-				boolean b = false;
+				boolean temp = false;
 				if(ef.length()>=1)
 				{
 					for(int i = 0; i < arr.length; i++)
@@ -197,18 +197,25 @@ public class newUI{
 							dot= true;
 					}
 					if( atSign ==true && dot == true)
-						b= true;
+						temp= true;
 					else{
-						b = false;
+						temp = false;
 					}
 				}
-				if(an_field.getText().length() > 0 && b && p_field.getText().equals(cp_field.getText()) && editorPane.getText().length() > 0)
+				if(an_field.getText().length() > 0 && temp && p_field.getText().equals(cp_field.getText()))
 				{	
+
 					setters();
-//					Account a = new Account(an_field.getText(), e_field.getText(), p_field.getPassword().toString(), editorPane.getText() ,comboBox.getSelectedItem().toString() );
 					DataDriver dd = new DataDriver();
-//					dd.AccountList.add(a);
 					dd.SaveData(fn, an, e, p, d, c);
+					
+					//Close window and go back to home or make a congrats?
+					naPanel.setVisible(false);
+					
+					WelcomePanelUI n = new WelcomePanelUI();
+					n.setVisible(true);
+				
+					
 				}
 				else
 				{

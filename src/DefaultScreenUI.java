@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.JTree;
 import javax.swing.table.DefaultTableModel;
@@ -352,15 +353,21 @@ public class DefaultScreenUI extends JFrame {
 		 ********************************* Tool Bar Components*******************************************
 		 ***********************************************************************************************/
 
-		ImageIcon back = new ImageIcon("toolbar\\backward.png");
+		URL backUrl = DefaultScreenUI.class.getResource("/toolbar/backward.png");
+		ImageIcon back = new ImageIcon(backUrl);
 
-		ImageIcon front = new ImageIcon("toolbar\\foreward.png");
+		URL frontUrl = DefaultScreenUI.class.getResource("/toolbar/foreward.png");
+		ImageIcon front = new ImageIcon(frontUrl);
+		
+		URL homeUrl = DefaultScreenUI.class.getResource("/toolbar/home.png"); 
+		ImageIcon home = new ImageIcon(homeUrl);
 
-		ImageIcon home = new ImageIcon("toolbar\\home.png");
+	//	ImageIcon newie = new ImageIcon(DefaultScreenUI.getToolbar("/toolbar/add.png"));
+		URL newieUrl = DefaultScreenUI.class.getResource("/toolbar/add.png");
+		ImageIcon newie = new ImageIcon(newieUrl);
 
-		ImageIcon newie = new ImageIcon("toolbar\\add.png");
-
-		ImageIcon refresh = new ImageIcon("toolbar\\refresh.png");
+		URL refreshUrl = DefaultScreenUI.class.getResource("/toolbar/refresh.png");
+		ImageIcon refresh = new ImageIcon(refreshUrl);
 
 		/***********************************************************************************************
 		 ********************************* Menu Bar Components*******************************************
@@ -495,8 +502,7 @@ public class DefaultScreenUI extends JFrame {
 				frame.getContentPane().add(newPanel);
 			}
 		});
-		mntmUserAccount
-				.setIcon(new ImageIcon("menubar\\AccountMenu\\user.png"));
+		mntmUserAccount.setIcon(new ImageIcon("menubar\\AccountMenu\\user.png"));
 		mnNewAccount.add(mntmUserAccount);
 
 		JMenuItem mntmWorkeduAccount = new JMenuItem("Work/EDU Account");
