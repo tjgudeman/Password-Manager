@@ -39,46 +39,48 @@ public class listUI extends JFrame{
 		inTb.setFloatable(false);
 		inTb.setBounds(228, 14, 230, 42);
 		
-		ImageIcon tmail = new ImageIcon("listTool\\mail.png");
-		JButton tbtnMail = new JButton(tmail);
-		tbtnMail.setBackground(new Color(245, 147, 43));
-		inTb.add(tbtnMail);
+//		The following are not used yet
 		
-		
-		ImageIcon tuser = new ImageIcon("listTool\\user.png");
-		JButton tbtnUsers = new JButton(tuser);
-		tbtnUsers.setBackground(new Color(76, 45, 169));
-		inTb.add(tbtnUsers);
-		
-		ImageIcon tsocial = new ImageIcon("listTool\\social.png");
-		JButton tbtnSocial = new JButton(tsocial);
-		tbtnSocial.setBackground(new Color(245, 62, 43));
-		inTb.add(tbtnSocial);
-		
-		ImageIcon tbuy = new ImageIcon("listTool\\shop.png");
-		JButton tbtnPurchase = new JButton(tbuy);
-		tbtnPurchase.setBackground(new Color(90, 186, 119));
-		inTb.add(tbtnPurchase);
-		
-		ImageIcon tbank = new ImageIcon("listTool\\bank.png");
-		JButton tbtnBanking = new JButton(tbank);
-		tbtnBanking.setBackground(new Color(36, 115, 149));
-		inTb.add(tbtnBanking);
-		
-		ImageIcon twork = new ImageIcon("listTool\\work.png");
-		JButton tbtnWork = new JButton(twork);
-		tbtnWork.setBackground(new Color(123, 122, 123));
-		inTb.add(tbtnWork);
-		
-		ImageIcon tother = new ImageIcon("listTool\\other.png");
-		JButton tbtnOther = new JButton(tother);
-		tbtnOther.setBackground(new Color(189, 39, 124));
-		inTb.add(tbtnOther);
-		
-		ImageIcon tall = new ImageIcon("listTool\\all.png");
-		JButton tbtnAll = new JButton(tall);
-		tbtnAll.setBackground(new Color(236, 219, 49));
-		inTb.add(tbtnAll);
+//		ImageIcon tmail = new ImageIcon("listTool\\mail.png");
+//		JButton tbtnMail = new JButton(tmail);
+//		tbtnMail.setBackground(new Color(245, 147, 43));
+//		inTb.add(tbtnMail);
+//		
+//		
+//		ImageIcon tuser = new ImageIcon("listTool\\user.png");
+//		JButton tbtnUsers = new JButton(tuser);
+//		tbtnUsers.setBackground(new Color(76, 45, 169));
+//		inTb.add(tbtnUsers);
+//		
+//		ImageIcon tsocial = new ImageIcon("listTool\\social.png");
+//		JButton tbtnSocial = new JButton(tsocial);
+//		tbtnSocial.setBackground(new Color(245, 62, 43));
+//		inTb.add(tbtnSocial);
+//		
+//		ImageIcon tbuy = new ImageIcon("listTool\\shop.png");
+//		JButton tbtnPurchase = new JButton(tbuy);
+//		tbtnPurchase.setBackground(new Color(90, 186, 119));
+//		inTb.add(tbtnPurchase);
+//		
+//		ImageIcon tbank = new ImageIcon("listTool\\bank.png");
+//		JButton tbtnBanking = new JButton(tbank);
+//		tbtnBanking.setBackground(new Color(36, 115, 149));
+//		inTb.add(tbtnBanking);
+//		
+//		ImageIcon twork = new ImageIcon("listTool\\work.png");
+//		JButton tbtnWork = new JButton(twork);
+//		tbtnWork.setBackground(new Color(123, 122, 123));
+//		inTb.add(tbtnWork);
+//		
+//		ImageIcon tother = new ImageIcon("listTool\\other.png");
+//		JButton tbtnOther = new JButton(tother);
+//		tbtnOther.setBackground(new Color(189, 39, 124));
+//		inTb.add(tbtnOther);
+//		
+//		ImageIcon tall = new ImageIcon("listTool\\all.png");
+//		JButton tbtnAll = new JButton(tall);
+//		tbtnAll.setBackground(new Color(236, 219, 49));
+//		inTb.add(tbtnAll);
 		
 	    listPanel = new JPanel();
 	    listPanel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0), 2), "Browser", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -139,15 +141,14 @@ public class listUI extends JFrame{
 			public void valueChanged(ListSelectionEvent arg0) {
 				// TODO Auto-generated method stub
 				if(table.getSelectedRow() > -1){
-//					System.out.print
 					String an = table.getValueAt(table.getSelectedRow(), 0).toString();
 					String e = table.getValueAt(table.getSelectedRow(), 1).toString();
 					String p = table.getValueAt(table.getSelectedRow(), 2).toString();
 					String d = table.getValueAt(table.getSelectedRow(), 3).toString();
 					String c = table.getValueAt(table.getSelectedRow(), 4).toString();
-					String k = table.getValueAt(table.getSelectedRow(), 5).toString();
+//					String k = table.getValueAt(table.getSelectedRow(), 5).toString();
 					
-					sideView.setters(f, an, e, p, d, c, k);
+					sideView.setters(f, an, e, p, d, c, null);
 					
 				}
 				

@@ -37,7 +37,7 @@ public class DefaultScreenUI extends JFrame {
 	private JPanel sidePanel;
 	private WelcomePanelUI welcomeView;
 	private JPanel welcomePanel;
-	private JFrame frame;
+	public static JFrame frame;
 	private JMenuBar menuBar;
 	private String filename;
 	private String path;
