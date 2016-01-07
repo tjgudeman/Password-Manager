@@ -91,19 +91,7 @@ public class DefaultScreenUI extends JFrame {
 		btnMail.setBounds(40, 64, 99, 97);
 		btnMail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					listView = new listUI(path, "Mail");
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				listPanel = listView.getPanel();
-				frame.getContentPane().add(listPanel);
-				panel.setVisible(false);
-				welcomePanel.setVisible(false);
-				if(newPanel != null){
-					frame.remove(newPanel);
-				}
+				btnListener("Mail");
 			}
 		});
 		panel.add(btnMail);
@@ -124,20 +112,7 @@ public class DefaultScreenUI extends JFrame {
 		btnUsers.setBounds(40, 295, 99, 96);
 		btnUsers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					listView = new listUI(path, "Users");
-					listPanel = listView.getPanel();
-					frame.getContentPane().add(listPanel);
-					panel.setVisible(false);
-					welcomePanel.setVisible(false);
-					if(newPanel != null){
-						frame.remove(newPanel);
-					}
-				
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				btnListener("Users");
 			}
 		});
 		panel.add(btnUsers);
@@ -159,21 +134,7 @@ public class DefaultScreenUI extends JFrame {
 		btnSocial.setBounds(178, 64, 99, 97);
 		btnSocial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					listView = new listUI(path, "Social");
-//					listView.loadData();
-					listPanel = listView.getPanel();
-					frame.getContentPane().add(listPanel);
-					panel.setVisible(false);
-					welcomePanel.setVisible(false);
-					if(newPanel != null){
-						frame.remove(newPanel);
-					}
-				
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				btnListener("Social");
 			}
 		});
 		panel.add(btnSocial);
@@ -195,21 +156,7 @@ public class DefaultScreenUI extends JFrame {
 		btnPurchase.setBounds(316, 64, 99, 97);
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					listView = new listUI(path, "Shopping");
-//					listView.loadData();
-					listPanel = listView.getPanel();
-					frame.getContentPane().add(listPanel);
-					panel.setVisible(false);
-					welcomePanel.setVisible(false);
-					if(newPanel != null){
-						frame.remove(newPanel);
-					}
-				
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				btnListener("Shopping");
 			}
 		});
 		panel.add(btnPurchase);
@@ -231,21 +178,7 @@ public class DefaultScreenUI extends JFrame {
 		btnBanking.setBounds(454, 64, 99, 97);
 		btnBanking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					listView = new listUI(path, "Banking");
-//					listView.loadData();
-					listPanel = listView.getPanel();
-					frame.getContentPane().add(listPanel);
-					panel.setVisible(false);
-					welcomePanel.setVisible(false);
-					if(newPanel != null){
-						frame.remove(newPanel);
-					}
-				
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				btnListener("Banking");
 			}
 		});
 		panel.add(btnBanking);
@@ -267,21 +200,7 @@ public class DefaultScreenUI extends JFrame {
 		btnWork.setBounds(178, 295, 99, 96);
 		btnWork.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					listView = new listUI(path, "Work/Edu");
-//					listView.loadData();
-					listPanel = listView.getPanel();
-					frame.getContentPane().add(listPanel);
-					panel.setVisible(false);
-					welcomePanel.setVisible(false);
-					if(newPanel != null){
-						frame.remove(newPanel);
-					}
-				
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				btnListener("Work/Edu");
 			}
 		});
 		panel.add(btnWork);
@@ -303,20 +222,7 @@ public class DefaultScreenUI extends JFrame {
 		btnOther.setBounds(316, 295, 99, 96);
 		btnOther.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					listView = new listUI(path, "Other");
-					listPanel = listView.getPanel();
-					frame.getContentPane().add(listPanel);
-					panel.setVisible(false);
-					welcomePanel.setVisible(false);
-					if(newPanel != null){
-						frame.remove(newPanel);
-					}
-				
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				btnListener("Other");
 			}
 		});
 		panel.add(btnOther);
@@ -338,21 +244,7 @@ public class DefaultScreenUI extends JFrame {
 		btnAll.setBounds(454, 295, 99, 96);
 		btnAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					listView = new listUI(path, "");
-//					listView.loadData();
-					listPanel = listView.getPanel();
-					frame.getContentPane().add(listPanel);
-					panel.setVisible(false);
-					welcomePanel.setVisible(false);
-					if(newPanel != null){
-						frame.remove(newPanel);
-					}
-				
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				btnListener("");
 			}
 		});
 		panel.add(btnAll);
@@ -696,5 +588,21 @@ public class DefaultScreenUI extends JFrame {
 
 	public Container getframe() {
 		return frame;
+	}
+	
+	public void btnListener(String btnName){
+		try {
+			listView = new listUI(path, btnName);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		listPanel = listView.getPanel();
+		frame.getContentPane().add(listPanel);
+		panel.setVisible(false);
+		welcomePanel.setVisible(false);
+		if(newPanel != null){
+			frame.remove(newPanel);
+		}
 	}
 }
