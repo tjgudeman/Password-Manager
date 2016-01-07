@@ -80,23 +80,7 @@ public class LoginGUI extends JFrame{
 
 			public void keyReleased(KeyEvent arg0) {
 				if(arg0.getKeyCode() == KeyEvent.VK_ENTER) {
-					setters();
-					  login = new Login(u, p); //PAssing username and Password
-					  String file = login.rotate(u);
-					  String path = new String("C:\\PasswordManager\\master.pwm");
-					  try {
-						if(login.readFile(path, u, p) == true){
-							btn_lnError.setVisible(false);
-							dsu = new DefaultScreenUI(file);
-							frame.dispose();
-							PmMockupUI.host.dispose();
-						  }
-						else{
-							btn_lnError.setVisible(true);
-						}
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					loginListener();
 				}
 				
 			}
@@ -116,23 +100,7 @@ public class LoginGUI extends JFrame{
 		//Logic for Login Button
 		btnLogin.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) {
-				  setters();
-				  login = new Login(u, p); //PAssing username and Password
-				  String file = login.rotate(u);
-				  String path = new String("C:\\PasswordManager\\master.pwm");
-				  try {
-					if(login.readFile(path, u, p) == true){
-						btn_lnError.setVisible(false);
-						dsu = new DefaultScreenUI(file);
-						frame.dispose();
-						PmMockupUI.host.dispose();
-					  }
-					else{
-						btn_lnError.setVisible(true);
-					}
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				  loginListener();
 			  } 
 			} );
 		
@@ -177,5 +145,26 @@ public class LoginGUI extends JFrame{
 	public void setters(){
 		u = textField.getText();
 		p = passwordField.getText();
+	}
+	
+	public void loginListener(){
+		setters();
+		  login = new Login(u, p); //PAssing username and Password
+		  String file = login.rotate(u);
+		  String path = new String("C:\\PasswordManager\\master.pwm");
+		  try {
+			if(login.readFile(path, u, p) == true){
+				btn_lnError.setVisible(false);
+				dsu = new DefaultScreenUI(file);
+				frame.dispose();
+				PmMockupUI.host.dispose();
+			  }
+			else{
+				btn_lnError.setVisible(true);
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 	}
 }
