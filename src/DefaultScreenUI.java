@@ -679,7 +679,6 @@ public class DefaultScreenUI extends JFrame {
 				TBbtnRefresh.setBackground(new Color(255, 160, 81));
 				TBbtnRefresh.addActionListener(new ActionListener(){
 
-					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
 						try {

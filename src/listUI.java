@@ -136,7 +136,6 @@ public class listUI extends JFrame{
 		table.setBounds(228, 99, 558, 374);
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 
-			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
 				// TODO Auto-generated method stub
 				if(table.getSelectedRow() > -1){
