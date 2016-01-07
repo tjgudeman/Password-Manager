@@ -296,7 +296,7 @@ public class DefaultScreenUI extends JFrame {
 		lblOther.setBounds(316, 402, 99, 14);
 		panel.add(lblOther);
 
-		URL otherURL = DefaultScreenUI.class.getResource("/big/user.png");
+		URL otherURL = DefaultScreenUI.class.getResource("/big/other.png");
 		ImageIcon other = new ImageIcon(otherURL);
 		JButton btnOther = new JButton(other);
 		btnOther.setBackground(new Color(189, 39, 124));
