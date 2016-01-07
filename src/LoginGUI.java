@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.net.URL;
 
@@ -70,6 +72,40 @@ public class LoginGUI extends JFrame{
 		passwordField = new JPasswordField();
 		passwordField.setBounds(197, 130, 122, 20);
 		getContentPane().add(passwordField);
+		
+		passwordField.addKeyListener( new KeyListener() {
+			public void keyPressed(KeyEvent e) {
+				
+			}
+
+			public void keyReleased(KeyEvent arg0) {
+				if(arg0.getKeyCode() == KeyEvent.VK_ENTER) {
+					setters();
+					  login = new Login(u, p); //PAssing username and Password
+					  String file = login.rotate(u);
+					  String path = new String("C:\\PasswordManager\\master.pwm");
+					  try {
+						if(login.readFile(path, u, p) == true){
+							btn_lnError.setVisible(false);
+							dsu = new DefaultScreenUI(file);
+							frame.dispose();
+							PmMockupUI.host.dispose();
+						  }
+						else{
+							btn_lnError.setVisible(true);
+						}
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
+			}
+
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.setFont(new Font("DialogInput", Font.BOLD, 13));
