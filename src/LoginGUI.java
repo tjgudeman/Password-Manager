@@ -166,7 +166,7 @@ public class LoginGUI extends JFrame{
 			if(login.readFile(path, u, p) == true){
 				btn_lnError.setVisible(false);
 				dsu = new DefaultScreenUI(file);
-				Timeout timer = new Timeout();
+//				Timeout timer = new Timeout();
 				frame.dispose();
 				PmMockupUI.host.dispose();
 			  }
