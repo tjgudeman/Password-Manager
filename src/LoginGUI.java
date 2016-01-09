@@ -80,7 +80,12 @@ public class LoginGUI extends JFrame{
 
 			public void keyReleased(KeyEvent arg0) {
 				if(arg0.getKeyCode() == KeyEvent.VK_ENTER) {
-					loginListener();
+					try {
+						loginListener();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 			}
@@ -100,7 +105,12 @@ public class LoginGUI extends JFrame{
 		//Logic for Login Button
 		btnLogin.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) {
-				  loginListener();
+				  try {
+					loginListener();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			  } 
 			} );
 		
@@ -147,7 +157,7 @@ public class LoginGUI extends JFrame{
 		p = passwordField.getText();
 	}
 	
-	public void loginListener(){
+	public void loginListener() throws Exception{
 		setters();
 		  login = new Login(u, p); //PAssing username and Password
 		  String file = login.rotate(u);
@@ -156,6 +166,7 @@ public class LoginGUI extends JFrame{
 			if(login.readFile(path, u, p) == true){
 				btn_lnError.setVisible(false);
 				dsu = new DefaultScreenUI(file);
+//				Timeout timer = new Timeout();
 				frame.dispose();
 				PmMockupUI.host.dispose();
 			  }

@@ -37,7 +37,7 @@ public class DefaultScreenUI extends JFrame {
 	private JPanel sidePanel;
 	private WelcomePanelUI welcomeView;
 	private JPanel welcomePanel;
-	private JFrame frame;
+	public static JFrame frame;
 	private JMenuBar menuBar;
 	private String filename;
 	private String path;
@@ -74,189 +74,26 @@ public class DefaultScreenUI extends JFrame {
 		panel.setBackground(new Color(255, 246, 230));
 		panel.setLayout(null);
 
-		/***********************************************************************************************
-		 ********************************* Mail btn Components*******************************************
-		 ***********************************************************************************************/
+		/**********************************Big Btn Components*******************************************/
+		
+		btnCreate("/big/mail.png", 40, 172, 99, 14, 245, 147, 43, 40, 64, 99, 97, "Mail" ); //Mail Btn
+		
+		btnCreate("/big/user.png", 40, 402, 99, 14, 76, 45, 169, 40, 295, 99, 96, "Users" ); //Users Btn
+		
+		btnCreate("/big/social.png", 178, 172, 99, 14, 245, 62, 43, 178, 64, 99, 97, "Social" ); //Social Btn
+		
+		btnCreate("/big/shop.png", 316, 172, 99, 14, 90, 186, 119, 316, 64, 99, 97, "Shopping" ); //Shopping Btn
+		
+		btnCreate("/big/bank.png", 454, 172, 99, 14, 36, 115, 149, 454, 64, 99, 97, "Banking" ); //Banking Btn
+		
+		btnCreate("/big/work.png", 178, 402, 99, 14, 123, 122, 123, 178, 295, 99, 96, "Work/Edu" ); //Work/Edu Btn
+		
+		btnCreate("/big/other.png", 316, 402, 99, 14, 189, 39, 124, 316, 295, 99, 96, "Other" ); // Other Btn
+		
+		btnCreate("/big/all.png", 454, 402, 99, 14, 236, 219, 49, 454, 295, 99, 96, "" ); //All Btn
 
-		JLabel lblMail = new JLabel("MAIL");
-		lblMail.setFont(new Font("LT Oksana", Font.PLAIN, 14));
-		lblMail.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMail.setBounds(40, 172, 99, 14);
-		panel.add(lblMail);
 
-		URL mailURL = DefaultScreenUI.class.getResource("/big/mail.png");			
-		ImageIcon mail = new ImageIcon(mailURL);
-		JButton btnMail = new JButton(mail);
-		btnMail.setBackground(new Color(245, 147, 43));
-		btnMail.setBounds(40, 64, 99, 97);
-		btnMail.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnListener("Mail");
-			}
-		});
-		panel.add(btnMail);
-
-		/***********************************************************************************************
-		 ********************************* User btn Components*******************************************
-		 ***********************************************************************************************/
-		JLabel lblUsers = new JLabel("USERS");
-		lblUsers.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsers.setFont(new Font("LT Oksana", Font.PLAIN, 14));
-		lblUsers.setBounds(40, 402, 99, 14);
-		panel.add(lblUsers);
-
-		URL userURL = DefaultScreenUI.class.getResource("/big/user.png");
-		ImageIcon user = new ImageIcon(userURL);
-		JButton btnUsers = new JButton(user);
-		btnUsers.setBackground(new Color(76, 45, 169));
-		btnUsers.setBounds(40, 295, 99, 96);
-		btnUsers.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnListener("Users");
-			}
-		});
-		panel.add(btnUsers);
-
-		/***********************************************************************************************
-		 ********************************* Social btn Components*****************************************
-		 ***********************************************************************************************/
-
-		JLabel lblSocial = new JLabel("SOCIAL");
-		lblSocial.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSocial.setFont(new Font("LT Oksana", Font.PLAIN, 14));
-		lblSocial.setBounds(178, 172, 99, 14);
-		panel.add(lblSocial);
-
-		URL socialURL = DefaultScreenUI.class.getResource("/big/social.png");
-		ImageIcon social = new ImageIcon(socialURL);
-		JButton btnSocial = new JButton(social);
-		btnSocial.setBackground(new Color(245, 62, 43));
-		btnSocial.setBounds(178, 64, 99, 97);
-		btnSocial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnListener("Social");
-			}
-		});
-		panel.add(btnSocial);
-
-		/***********************************************************************************************
-		 ********************************* Buy btn Components********************************************
-		 ***********************************************************************************************/
-
-		JLabel lblShopping = new JLabel("SHOPPING");
-		lblShopping.setHorizontalAlignment(SwingConstants.CENTER);
-		lblShopping.setFont(new Font("LT Oksana", Font.PLAIN, 14));
-		lblShopping.setBounds(316, 172, 99, 14);
-		panel.add(lblShopping);
-
-		URL buyURL = DefaultScreenUI.class.getResource("/big/shop.png");
-		ImageIcon buy = new ImageIcon(buyURL);
-		JButton btnPurchase = new JButton(buy);
-		btnPurchase.setBackground(new Color(90, 186, 119));
-		btnPurchase.setBounds(316, 64, 99, 97);
-		btnPurchase.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnListener("Shopping");
-			}
-		});
-		panel.add(btnPurchase);
-
-		/***********************************************************************************************
-		 ********************************* Bank btn Components*******************************************
-		 ***********************************************************************************************/
-
-		JLabel lblBanking = new JLabel("BANKING");
-		lblBanking.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBanking.setFont(new Font("LT Oksana", Font.PLAIN, 14));
-		lblBanking.setBounds(454, 172, 99, 14);
-		panel.add(lblBanking);
-
-		URL bankURL = DefaultScreenUI.class.getResource("/big/bank.png");
-		ImageIcon bank = new ImageIcon(bankURL);
-		JButton btnBanking = new JButton(bank);
-		btnBanking.setBackground(new Color(36, 115, 149));
-		btnBanking.setBounds(454, 64, 99, 97);
-		btnBanking.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnListener("Banking");
-			}
-		});
-		panel.add(btnBanking);
-
-		/***********************************************************************************************
-		 ********************************* Work btn Components*******************************************
-		 ***********************************************************************************************/
-
-		JLabel lblSchoolwork = new JLabel("WORK/EDU");
-		lblSchoolwork.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSchoolwork.setFont(new Font("LT Oksana", Font.PLAIN, 14));
-		lblSchoolwork.setBounds(178, 402, 99, 14);
-		panel.add(lblSchoolwork);
-
-		URL workURL = DefaultScreenUI.class.getResource("/big/work.png");
-		ImageIcon work = new ImageIcon(workURL);
-		JButton btnWork = new JButton(work);
-		btnWork.setBackground(new Color(123, 122, 123));
-		btnWork.setBounds(178, 295, 99, 96);
-		btnWork.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnListener("Work/Edu");
-			}
-		});
-		panel.add(btnWork);
-
-		/***********************************************************************************************
-		 ********************************* Other btn Components******************************************
-		 ***********************************************************************************************/
-
-		JLabel lblOther = new JLabel("OTHER");
-		lblOther.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOther.setFont(new Font("LT Oksana", Font.PLAIN, 14));
-		lblOther.setBounds(316, 402, 99, 14);
-		panel.add(lblOther);
-
-		URL otherURL = DefaultScreenUI.class.getResource("/big/other.png");
-		ImageIcon other = new ImageIcon(otherURL);
-		JButton btnOther = new JButton(other);
-		btnOther.setBackground(new Color(189, 39, 124));
-		btnOther.setBounds(316, 295, 99, 96);
-		btnOther.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnListener("Other");
-			}
-		});
-		panel.add(btnOther);
-
-		/***********************************************************************************************
-		 ********************************* All btn Components********************************************
-		 ***********************************************************************************************/
-
-		JLabel lblAll = new JLabel("ALL");
-		lblAll.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAll.setFont(new Font("LT Oksana", Font.PLAIN, 14));
-		lblAll.setBounds(454, 402, 99, 14);
-		panel.add(lblAll);
-
-		URL allURL = DefaultScreenUI.class.getResource("/big/all.png");
-		ImageIcon all = new ImageIcon(allURL);
-		JButton btnAll = new JButton(all);
-		btnAll.setBackground(new Color(236, 219, 49));
-		btnAll.setBounds(454, 295, 99, 96);
-		btnAll.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnListener("");
-			}
-		});
-		panel.add(btnAll);
-		/***********************************************************************************************
-		 ********************************* Tool Bar Components*******************************************
-		 ***********************************************************************************************/
-
-		URL backUrl = DefaultScreenUI.class.getResource("/toolbar/backward.png");
-		ImageIcon back = new ImageIcon(backUrl);
-
-		URL frontUrl = DefaultScreenUI.class.getResource("/toolbar/foreward.png");
-		ImageIcon front = new ImageIcon(frontUrl);
+		/**********************************Tool Bar Components*******************************************/
 		
 		URL homeUrl = DefaultScreenUI.class.getResource("/toolbar/home.png"); 
 		ImageIcon home = new ImageIcon(homeUrl);
@@ -267,22 +104,17 @@ public class DefaultScreenUI extends JFrame {
 		URL refreshUrl = DefaultScreenUI.class.getResource("/toolbar/refresh.png");
 		ImageIcon refresh = new ImageIcon(refreshUrl);
 
-		/***********************************************************************************************
-		 ********************************* Menu Bar Components*******************************************
-		 ***********************************************************************************************/
+		/**********************************Menu Bar Components*******************************************/
 
 		menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, frame.getWidth(), 15);
 
-		/***********************************************************************************************
-		 ************************************ File Menu******************************************
-		 ***********************************************************************************************/
+		/**************************************** File Menu *********************************************/
+		
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 
 		JMenuItem mntmSave = new JMenuItem("Save");
-//		URL mntmSaveURL = DefaultScreenUI.class.getResource("/menubar/FileMenu.save1/png");
-		mntmSave.setIcon(new ImageIcon("C:/Users/trevor.gudeman/Desktop/Workspace/Password-Manager/menubar/FileMenu/save1.png"));
 		mnFile.add(mntmSave);
 
 		JMenuItem mntmLogout = new JMenuItem("Logout");
@@ -294,9 +126,7 @@ public class DefaultScreenUI extends JFrame {
 				}});
 		mnFile.add(mntmLogout);
 
-		JMenuItem mntmExit = new JMenuItem("Exit");
-		mntmExit.setIcon(new ImageIcon("C:/Users/trevor.gudeman/Desktop/Workspace/Password-Manager/FileMenu/exit3.png"));
-		
+		JMenuItem mntmExit = new JMenuItem("Exit");		
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -313,169 +143,22 @@ public class DefaultScreenUI extends JFrame {
 		
 		
 		JMenu mnNewAccount = new JMenu("New Account");
-		//URL mnNewAccountURL = DefaultScreenUI.resource.
-		mnNewAccount.setIcon(new ImageIcon("C:/Users/trevor.gudeman/Desktop/Workspace/Password-Manager/AccountMenu/create1.png"));
 		mnAccount.add(mnNewAccount);
-
-		JMenuItem mntmNewMenuItem = new JMenuItem("Mail Account");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(listPanel != null) {
-					listPanel.setVisible(false);
-					frame.remove(listPanel);
-				}
-				if(newUI.naPanel != null){
-					newUI.naPanel.setVisible(false);
-				}
-				WelcomePanelUI.welcomePanel.setVisible(true);
-				newView = new newUI(path);
-				newView.setStatus("Mail");
-				panel.setVisible(false);
-				newPanel = newView.getPanel();
-				newPanel.setVisible(true);
-				frame.getContentPane().add(newPanel);
-			}
-		});
-		mntmNewMenuItem.setIcon(new ImageIcon("menubar\\AccountMenu\\mail59.png"));
-		mnNewAccount.add(mntmNewMenuItem);
-				
-
-
-		JMenuItem mntmSocialAccount = new JMenuItem("Social Account");
-		mntmSocialAccount.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(listPanel != null) {
-					listPanel.setVisible(false);
-					frame.remove(listPanel);
-				}
-				if(newUI.naPanel != null){
-					newUI.naPanel.setVisible(false);
-				}
-				WelcomePanelUI.welcomePanel.setVisible(true);
-				newView = new newUI(path);
-				newView.setStatus("Social");
-				panel.setVisible(false);
-				newPanel = newView.getPanel();
-				newPanel.setVisible(true);
-				frame.getContentPane().add(newPanel);
-			}
-		});
 		
-		mntmSocialAccount.setIcon(new ImageIcon(
-				"menubar\\AccountMenu\\social.png"));
-		mnNewAccount.add(mntmSocialAccount);
+		mnNewAccount.add(newJMI("Mail Account", "Mail", "menubar\\AccountMenu\\mail59.png"));
+		
+		mnNewAccount.add(newJMI("Social Account", "Social", "menubar\\AccountMenu\\social.png"));
+		
+		mnNewAccount.add(newJMI("Shopping Account", "Shopping", "menubar\\AccountMenu\\shopping232.png"));
+		
+		mnNewAccount.add(newJMI("Banking Account", "Banking", "menubar\\AccountMenu\\Banking.png"));
+		
+		mnNewAccount.add(newJMI("User Account", "Users", "menubar\\AccountMenu\\user.png"));
+		
+		mnNewAccount.add(newJMI("Work/Edu Account", "Work/Edu", "menubar\\AccountMenu\\university2.png"));
+		
+		mnNewAccount.add(newJMI("Other Account", "Other", null));
 
-		JMenuItem mntmShoppingAccount = new JMenuItem("Shopping Account");
-		mntmShoppingAccount.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(listPanel != null) {
-					listPanel.setVisible(false);
-					frame.remove(listPanel);
-				}
-				if(newUI.naPanel != null){
-					newUI.naPanel.setVisible(false);
-				}
-				WelcomePanelUI.welcomePanel.setVisible(true);
-				newView = new newUI(path);
-				panel.setVisible(false);
-				newView.setStatus("Shopping");
-				newPanel = newView.getPanel();
-				newPanel.setVisible(true);
-				frame.getContentPane().add(newPanel);
-			}
-		});
-		mntmShoppingAccount.setIcon(new ImageIcon(
-				"menubar\\AccountMenu\\shopping232.png"));
-		mnNewAccount.add(mntmShoppingAccount);
-
-		JMenuItem mntmBankingAccount = new JMenuItem("Banking Account");
-		mntmBankingAccount.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(listPanel != null) {
-					listPanel.setVisible(false);
-					frame.remove(listPanel);
-				}
-				if(newUI.naPanel != null){
-					newUI.naPanel.setVisible(false);
-				}
-				WelcomePanelUI.welcomePanel.setVisible(true);
-				newView = new newUI(path);
-				panel.setVisible(false);
-				newView.setStatus("Banking");
-				newPanel = newView.getPanel();
-				newPanel.setVisible(true);
-				frame.getContentPane().add(newPanel);
-			}
-		});
-		mntmBankingAccount.setIcon(new ImageIcon(
-				"menubar\\AccountMenu\\banking.png"));
-		mnNewAccount.add(mntmBankingAccount);
-
-		JMenuItem mntmUserAccount = new JMenuItem("User Account");
-		mntmUserAccount.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(listPanel != null) {
-					listPanel.setVisible(false);
-					frame.remove(listPanel);
-				}
-				if(newUI.naPanel != null){
-					newUI.naPanel.setVisible(false);
-				}
-				WelcomePanelUI.welcomePanel.setVisible(true);
-				newView = new newUI(path);
-				panel.setVisible(false);
-				newView.setStatus("Users");
-				newPanel = newView.getPanel();
-				newPanel.setVisible(true);
-				frame.getContentPane().add(newPanel);
-			}
-		});
-		mntmUserAccount.setIcon(new ImageIcon("menubar\\AccountMenu\\user.png"));
-		mnNewAccount.add(mntmUserAccount);
-
-		JMenuItem mntmWorkeduAccount = new JMenuItem("Work/EDU Account");
-		mntmWorkeduAccount.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(listPanel != null) {
-					listPanel.setVisible(false);
-					frame.remove(listPanel);
-				}
-				if(newUI.naPanel != null){
-					newUI.naPanel.setVisible(false);
-				}
-				WelcomePanelUI.welcomePanel.setVisible(true);
-				newView = new newUI(path);
-				panel.setVisible(false);
-				newView.setStatus("Work/Edu");
-				newPanel = newView.getPanel();
-				newPanel.setVisible(true);
-				frame.getContentPane().add(newPanel);
-			}
-		});
-		mntmWorkeduAccount.setIcon(new ImageIcon(
-				"menubar\\AccountMenu\\university2.png"));
-		mnNewAccount.add(mntmWorkeduAccount);
-
-		JMenuItem mntmOtherAccount = new JMenuItem("Other Account");
-		mntmOtherAccount.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(listPanel != null) {
-					listPanel.setVisible(false);
-					frame.remove(listPanel);
-					
-				}
-				if(newUI.naPanel != null){
-					newUI.naPanel.setVisible(false);
-				}
-				WelcomePanelUI.welcomePanel.setVisible(true);
-				newView = new newUI(path);
-				panel.setVisible(false);
-				newView.setStatus("Other");
-				newPanel = newView.getPanel();
-				frame.getContentPane().add(newPanel);
-			}
-		});
-		mnNewAccount.add(mntmOtherAccount);
 		
 		/***********************************************************************************************
 		 *************************************Help Menu*******************************************
@@ -586,8 +269,63 @@ public class DefaultScreenUI extends JFrame {
 
 	}
 
+	public JMenuItem newJMI(String name, final String type, String icon) {
+		JMenuItem mntmNewMenuItem = new JMenuItem(name);
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(listPanel != null) {
+					listPanel.setVisible(false);
+					frame.remove(listPanel);
+				}
+				if(newUI.naPanel != null){
+					newUI.naPanel.setVisible(false);
+				}
+				WelcomePanelUI.welcomePanel.setVisible(true);
+				newView = new newUI(path);
+				newView.setStatus(type);
+				panel.setVisible(false);
+				newPanel = newView.getPanel();
+				newPanel.setVisible(true);
+				frame.getContentPane().add(newPanel);
+			}
+		});
+		mntmNewMenuItem.setIcon(new ImageIcon(icon));
+		
+		return mntmNewMenuItem;
+	}
+
 	public Container getframe() {
 		return frame;
+	}
+	
+	public void btnCreate(String url, int b1, int b2, int b3, int b4, 
+									  int r, int g, int b, 
+									  int x, int y, int h, int z, 
+									  final String cat) {
+		JLabel btnLbl = new JLabel();
+		if(cat == "") {
+			btnLbl = new JLabel("ALL");
+		}
+		else {
+			btnLbl = new JLabel(cat.toUpperCase());
+		}
+		btnLbl.setFont(new Font("LT Oksana", Font.PLAIN, 14));
+		btnLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		btnLbl.setBounds(b1, b2, b3, b4);
+		panel.add(btnLbl);
+		
+		URL u = DefaultScreenUI.class.getResource(url);			
+		ImageIcon icon = new ImageIcon(u);
+		JButton btn = new JButton(icon);
+		btn.setBackground(new Color(r, g, b));
+		btn.setBounds(x, y, h, z);
+		btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnListener(cat);
+			}
+		});
+		panel.add(btn);
+		
 	}
 	
 	public void btnListener(String btnName){

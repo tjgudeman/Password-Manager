@@ -61,7 +61,7 @@ public class sidePanelUI {
 		passwordTField.setEditable(false);
 		passwordCTField.setEditable(false);
 		descripTField.setEditable(false);
-		editButton.setEnabled(true);
+//		editButton.setEnabled(true);
 		
 		EditPanel.setVisible(false);
 		

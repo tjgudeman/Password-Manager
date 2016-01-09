@@ -1,25 +1,15 @@
+<<<<<<< HEAD
 /Pensive Parakeet.jpg
 /big/
 /java-json.jar
 /listTool/
 /otherJunk/
 /toolbar/
+=======
+>>>>>>> origin/master
 /DataDriver.class
 /DefaultScreenUI$1.class
-/DefaultScreenUI$10.class
-/DefaultScreenUI$11.class
-/DefaultScreenUI$12.class
-/DefaultScreenUI$13.class
-/DefaultScreenUI$14.class
-/DefaultScreenUI$15.class
-/DefaultScreenUI$16.class
-/DefaultScreenUI$17.class
-/DefaultScreenUI$18.class
-/DefaultScreenUI$19.class
 /DefaultScreenUI$2.class
-/DefaultScreenUI$20.class
-/DefaultScreenUI$21.class
-/DefaultScreenUI$22.class
 /DefaultScreenUI$3.class
 /DefaultScreenUI$4.class
 /DefaultScreenUI$5.class
@@ -51,11 +41,16 @@
 /SignUpGUI$8.class
 /SignUpGUI$9.class
 /SignUpGUI.class
+<<<<<<< HEAD
+=======
+/Timeout.class
+>>>>>>> origin/master
 /WelcomePanelUI.class
 /listUI$1.class
 /listUI$2.class
 /listUI$3.class
 /listUI.class
+<<<<<<< HEAD
 /main.class
 /newAccount.class
 /newUI$1.class
@@ -67,3 +62,5 @@
 /sidePanelUI$1.class
 /sidePanelUI$mListener.class
 /sidePanelUI.class
+=======
+>>>>>>> origin/master
